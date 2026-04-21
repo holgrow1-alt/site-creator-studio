@@ -1,16 +1,25 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Nav } from "@/components/sections/Nav";
+import { Hero } from "@/components/sections/Hero";
+import { Marquee } from "@/components/sections/Marquee";
+import { Manifesto } from "@/components/sections/Manifesto";
+import { Ecossistema } from "@/components/sections/Ecossistema";
+import { Tecnologia } from "@/components/sections/Tecnologia";
+import { Impacto } from "@/components/sections/Impacto";
+import { Footer } from "@/components/sections/Footer";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <main className="relative min-h-screen bg-background text-foreground">
+      <Nav />
+      <Hero />
+      <Marquee words={["REGENERAÇÃO", "IMPACTO", "DRONES", "IA", "FLORESTAS", "OCEANOS", "ATMOSFERA", "AÇÃO"]} />
+      <Manifesto />
+      <Ecossistema />
+      <Tecnologia />
+      <Impacto />
+      <Footer />
+    </main>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
