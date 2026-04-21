@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
-import { Github, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Linkedin, MessageCircle } from "lucide-react";
+import logo from "@/assets/logo-ecodrones.png";
+
+// TODO: substituir pelos contatos reais
+const WHATSAPP_URL = "https://wa.me/5500000000000";
+const LINKEDIN_URL = "https://www.linkedin.com/in/seu-perfil";
 
 export function Footer() {
   return (
@@ -20,62 +25,59 @@ export function Footer() {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-16 mb-24 pt-16 border-t border-border">
+        <div className="grid lg:grid-cols-2 gap-16 mb-24 pt-16 border-t border-border">
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-[88px] h-[88px] rounded-full border border-primary/40 flex items-center justify-center bg-primary/5">
-                <span className="font-display text-3xl text-primary text-glow">ED</span>
-              </div>
+            <div className="flex items-center gap-4 mb-6">
+              <img src={logo} alt="EcoDrones" className="w-20 h-20 object-contain" />
               <div>
                 <div className="font-display text-2xl text-foreground">EcoDrones</div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Comunidade Global</div>
+                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">Community</div>
               </div>
             </div>
-            <p className="text-sm text-foreground/60 leading-relaxed font-light max-w-xs">
-              Tecnologia autônoma a serviço da regeneração planetária.
+            <p className="text-sm text-foreground/60 leading-relaxed font-light max-w-md">
+              Comunidade de pilotos e voluntários usando drones para reflorestar o planeta.
+              Meta: 100.000 árvores nativas plantadas.
             </p>
           </div>
 
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary mb-6">Navegar</div>
-            <ul className="space-y-3 text-sm">
-              {["Manifesto", "Ecossistema", "Tecnologia", "Impacto", "Comunidade"].map((l) => (
-                <li key={l}>
-                  <a href={`#${l.toLowerCase()}`} className="text-foreground/70 hover:text-primary transition-colors">
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div id="pix">
-            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary mb-6">Apoiar via PIX</div>
-            <div className="aspect-square w-40 bg-foreground p-3 mb-4">
-              <div className="w-full h-full bg-background grid grid-cols-8 grid-rows-8 gap-px p-2">
-                {Array.from({ length: 64 }).map((_, i) => (
-                  <div key={i} className={Math.random() > 0.5 ? "bg-foreground" : ""} />
-                ))}
-              </div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary mb-6">Contato</div>
+            <div className="flex flex-col gap-4">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 p-4 border border-border hover:border-primary hover:bg-card transition-all duration-500"
+              >
+                <div className="w-12 h-12 border border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                  <MessageCircle className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">WhatsApp</div>
+                  <div className="text-sm text-foreground group-hover:text-primary transition-colors">Fale com a gente</div>
+                </div>
+              </a>
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 p-4 border border-border hover:border-primary hover:bg-card transition-all duration-500"
+              >
+                <div className="w-12 h-12 border border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                  <Linkedin className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">LinkedIn</div>
+                  <div className="text-sm text-foreground group-hover:text-primary transition-colors">Conecte-se</div>
+                </div>
+              </a>
             </div>
-            <div className="font-mono text-xs text-foreground/70">pix@ecodrones.org</div>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pt-8 border-t border-border">
           <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/40">
-            © 2026 EcoDrones · Operação carbono-negativa
-          </div>
-          <div className="flex gap-4">
-            {[Instagram, Youtube, Github, Linkedin].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="w-10 h-10 border border-border flex items-center justify-center hover:border-primary hover:text-primary hover:shadow-neon transition-all duration-500"
-              >
-                <Icon className="w-4 h-4" />
-              </a>
-            ))}
+            © 2026 EcoDrones Community
           </div>
         </div>
       </div>

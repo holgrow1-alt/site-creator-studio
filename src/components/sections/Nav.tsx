@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo-ecodrones.png";
 
 const links = [
   { href: "#manifesto", label: "Manifesto" },
   { href: "#ecossistema", label: "Ecossistema" },
   { href: "#tecnologia", label: "Tecnologia" },
-  { href: "#impacto", label: "Impacto" },
-  { href: "#comunidade", label: "Comunidade" },
+  { href: "#impacto", label: "Meta" },
+  { href: "#comunidade", label: "Contato" },
 ];
 
 export function Nav() {
@@ -31,12 +32,9 @@ export function Nav() {
     >
       <div className="container flex items-center justify-between py-4">
         <a href="#" className="flex items-center gap-3 group">
-          <div className="relative w-[108px] h-[108px] -my-8">
-            <div className="absolute inset-0 bg-primary/30 blur-3xl rounded-full group-hover:bg-primary/50 transition-all duration-700" />
-            <div className="relative w-full h-full rounded-full border-2 border-primary/40 bg-background flex items-center justify-center overflow-hidden">
-              <span className="font-display text-4xl text-primary text-glow">ED</span>
-              <div className="absolute inset-0 rounded-full border border-primary/20 animate-pulse-glow" />
-            </div>
+          <div className="relative w-[88px] h-[88px] -my-4">
+            <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full group-hover:bg-primary/40 transition-all duration-700" />
+            <img src={logo} alt="EcoDrones" className="relative w-full h-full object-contain" />
           </div>
         </a>
 
