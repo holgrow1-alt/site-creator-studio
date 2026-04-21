@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Trees, Waves, Wind, Sprout } from "lucide-react";
+import { Trees, Users, Plane, Heart } from "lucide-react";
 
 const items = [
-  { icon: Trees, num: "01", title: "Florestas", desc: "Reflorestamento por drones de precisão. 10.000 sementes/hora.", stat: "120k+ árvores" },
-  { icon: Waves, num: "02", title: "Oceanos", desc: "Monitoramento de microplásticos e recifes em águas profundas.", stat: "8 bacias mapeadas" },
-  { icon: Wind, num: "03", title: "Atmosfera", desc: "Sensores aéreos medindo emissões em tempo real.", stat: "24/7 telemetria" },
-  { icon: Sprout, num: "04", title: "Biomas", desc: "IA classificando espécies e fluxos de fauna selvagem.", stat: "200+ espécies" },
+  { icon: Plane, num: "01", title: "Drones", desc: "Pilotos voluntários operando drones para semeadura aérea de precisão." },
+  { icon: Trees, num: "02", title: "Reflorestamento", desc: "Plantio de espécies nativas em áreas degradadas, identificadas com apoio da comunidade." },
+  { icon: Users, num: "03", title: "Comunidade", desc: "Rede aberta de pilotos, ambientalistas e apoiadores construindo o movimento juntos." },
+  { icon: Heart, num: "04", title: "Apoio", desc: "Doações e parcerias que financiam sementes, equipamentos e operações de campo." },
 ];
 
 export function Ecossistema() {
@@ -28,8 +28,8 @@ export function Ecossistema() {
           transition={{ duration: 1 }}
           className="font-display text-5xl md:text-7xl lg:text-9xl leading-[0.9] tracking-tight max-w-5xl mb-20"
         >
-          Quatro frentes.<br />
-          Um <span className="text-primary text-glow">planeta</span>.
+          Quatro pilares.<br />
+          Um <span className="text-primary text-glow">propósito</span>.
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
@@ -52,10 +52,7 @@ export function Ecossistema() {
                     <Icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <h3 className="font-display text-4xl md:text-5xl mb-4 text-foreground">{item.title}</h3>
-                  <p className="text-sm text-foreground/60 leading-relaxed mb-8 font-light">{item.desc}</p>
-                  <div className="pt-4 border-t border-border/50 font-mono text-xs text-primary uppercase tracking-widest">
-                    → {item.stat}
-                  </div>
+                  <p className="text-sm text-foreground/60 leading-relaxed font-light">{item.desc}</p>
                 </div>
               </motion.div>
             );
