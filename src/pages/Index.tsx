@@ -6,19 +6,23 @@ import { Ecossistema } from "@/components/sections/Ecossistema";
 import { Tecnologia } from "@/components/sections/Tecnologia";
 import { Impacto } from "@/components/sections/Impacto";
 import { Footer } from "@/components/sections/Footer";
+import { LoadingScreen } from "@/components/LoadingScreen";
 
 const Index = () => {
   return (
-    <main className="relative min-h-screen bg-background text-foreground">
-      <Nav />
-      <Hero />
-      <Marquee words={["REGENERAÇÃO", "IMPACTO", "DRONES", "IA", "FLORESTAS", "OCEANOS", "ATMOSFERA", "AÇÃO"]} />
-      <Manifesto />
-      <Ecossistema />
-      <Tecnologia />
-      <Impacto />
-      <Footer />
-    </main>
+    <>
+      <LoadingScreen />
+      <main className="relative min-h-screen bg-background text-foreground">
+        <Nav />
+        <Hero />
+        <Marquee words={["REGENERAÇÃO", "REFLORESTAMENTO", "DRONES", "FLORESTAS", "COMUNIDADE", "AÇÃO"]} />
+        <Manifesto />
+        <Ecossistema />
+        <Tecnologia />
+        <Impacto />
+        <Footer />
+      </main>
+    </>
   );
 };
 

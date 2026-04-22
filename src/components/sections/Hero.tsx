@@ -82,6 +82,23 @@ export function Hero() {
           </span>
         </motion.p>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
+          className="mt-10 flex flex-col sm:flex-row items-center gap-4"
+        >
+          <a href="#comunidade" className="btn-neon animate-pulse-glow">
+            Apoiar a missão →
+          </a>
+          <a
+            href="#manifesto"
+            className="font-mono text-[11px] uppercase tracking-[0.25em] text-foreground/70 hover:text-primary transition-colors duration-300 border-b border-transparent hover:border-primary pb-1"
+          >
+            Conhecer o projeto
+          </a>
+        </motion.div>
+
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}

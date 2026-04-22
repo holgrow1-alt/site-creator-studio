@@ -49,7 +49,7 @@ export function Impacto() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative bg-background border border-primary/30 p-10 md:p-12"
+            className="relative glass rounded-lg p-10 md:p-12"
           >
             <div className="font-mono text-[10px] uppercase tracking-widest text-primary/60 mb-4">/ Progresso</div>
             <div className="font-display text-7xl md:text-9xl text-primary text-glow leading-none mb-2">
@@ -73,6 +73,10 @@ export function Impacto() {
               <span>{((progress / goal) * 100).toFixed(2)}% concluído</span>
               <span>100%</span>
             </div>
+
+            <a href="#comunidade" className="btn-neon mt-10 w-full justify-center">
+              Quero apoiar →
+            </a>
           </motion.div>
         </div>
       </div>
