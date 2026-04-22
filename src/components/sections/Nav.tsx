@@ -55,8 +55,8 @@ export function Nav() {
         </nav>
 
         <a
-          href="#pix"
-          className="hidden lg:inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-mono text-xs uppercase tracking-widest font-bold hover:shadow-neon transition-all duration-500 hover:scale-105"
+          href="#comunidade"
+          className="hidden lg:inline-flex btn-neon"
         >
           Apoiar <span className="text-base">→</span>
         </a>
@@ -90,9 +90,9 @@ export function Nav() {
                 </a>
               ))}
               <a
-                href="#pix"
+                href="#comunidade"
                 onClick={() => setOpen(false)}
-                className="mt-4 inline-flex justify-center items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-mono text-xs uppercase tracking-widest font-bold"
+                className="mt-4 btn-neon justify-center"
               >
                 Apoiar →
               </a>

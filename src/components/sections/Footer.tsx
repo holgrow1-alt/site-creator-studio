@@ -47,9 +47,9 @@ export function Footer() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 border border-border hover:border-primary hover:bg-card transition-all duration-500"
+                className="group glass rounded-lg flex items-center gap-4 p-4"
               >
-                <div className="w-12 h-12 border border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                <div className="w-12 h-12 border border-primary/40 rounded flex items-center justify-center group-hover:bg-primary/10 transition-colors">
                   <MessageCircle className="w-5 h-5 text-primary" />
                 </div>
                 <div>
@@ -61,9 +61,9 @@ export function Footer() {
                 href={LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 border border-border hover:border-primary hover:bg-card transition-all duration-500"
+                className="group glass rounded-lg flex items-center gap-4 p-4"
               >
-                <div className="w-12 h-12 border border-primary/40 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                <div className="w-12 h-12 border border-primary/40 rounded flex items-center justify-center group-hover:bg-primary/10 transition-colors">
                   <Linkedin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
