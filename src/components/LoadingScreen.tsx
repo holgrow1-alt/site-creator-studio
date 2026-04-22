@@ -3,14 +3,19 @@ import { useEffect, useState } from "react";
 
 export function LoadingScreen() {
   const [done, setDone] = useState(false);
+  const [remove, setRemove] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setDone(true), 1400);
     return () => clearTimeout(t);
   }, []);
 
+  const handleExitComplete = () => setRemove(true);
+
+  if (remove) return null;
+
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={handleExitComplete}>
       {!done && (
         <motion.div
           initial={{ opacity: 1 }}
