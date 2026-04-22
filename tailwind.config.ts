@@ -13,7 +13,7 @@ export default {
     extend: {
       fontFamily: {
         display: ['"Bebas Neue"', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Outfit', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
