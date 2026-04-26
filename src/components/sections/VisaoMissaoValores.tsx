@@ -233,7 +233,7 @@ export function VisaoMissaoValores() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight text-center text-stone-800 mb-4"
+          className="font-display text-3xl md:text-4xl leading-tight tracking-tight text-center text-stone-800 mb-4"
         >
           O que nos{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500">
