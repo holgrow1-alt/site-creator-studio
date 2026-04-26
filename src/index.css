@@ -576,3 +576,9 @@
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+
+/* === GLOBAL SECTION LAYOUT OPTIMIZATION === */
+section { padding-top: clamp(2rem, 5vw, 4rem); padding-bottom: clamp(2rem, 5vw, 4rem); }
+  #hero { min-height: min(560px, 80vh); }
+  section:not(#hero) { min-height: 0; }
