@@ -102,7 +102,7 @@ export function ManifestoPDF() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="font-display text-xl md:text-2xl leading-[0.95] tracking-tight"
+            className="font-display text-3xl md:text-4xl leading-tight tracking-tight"
           >
             {t("manifestoPDF.heading")}
           </motion.h2>
