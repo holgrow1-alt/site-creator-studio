@@ -340,7 +340,7 @@ function PanelPitch() {
         transition={{ duration: 0.5 }}
         className="rounded-2xl border-2 border-emerald-400 bg-gradient-to-br from-emerald-50 to-teal-50 p-7 text-center"
       >
-        <p className="font-display text-xl md:text-2xl font-bold text-emerald-800 leading-tight">
+        <p className="font-display text-3xl md:text-4xl leading-tight tracking-tight font-bold text-emerald-800 leading-tight">
           NÃO É APENAS REFLORESTAMENTO.<br />
           <span className="text-teal-600">É ENGENHARIA DE SOBREVIVÊNCIA.</span>
         </p>
@@ -458,7 +458,7 @@ export function EstrategiaRegenerativa() {
           transition={{ duration: 1 }}
           className="max-w-4xl mb-6"
         >
-          <h2 className="font-display text-xl md:text-2xl leading-[0.95] tracking-tight text-emerald-900 mb-5">
+          <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight text-emerald-900 mb-5">
             ESTRATÉGIA REGENERATIVA
             <span className="block text-teal-600 mt-1">ECODRONES COMMUNITY</span>
           </h2>
@@ -504,7 +504,7 @@ export function EstrategiaRegenerativa() {
                       <div className="font-mono text-[10px] uppercase tracking-widest mb-0.5" style={{ color: sec.color }}>
                         {sec.tag}
                       </div>
-                      <div className="font-display text-xl md:text-2xl text-emerald-900">{sec.title}</div>
+                      <div className="font-display text-3xl md:text-4xl leading-tight tracking-tight text-emerald-900">{sec.title}</div>
                     </div>
                   </div>
                   <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
