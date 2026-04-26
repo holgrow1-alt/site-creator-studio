@@ -86,7 +86,7 @@ export function ApoieOProjeto() {
           className="text-center mb-6"
         >
           <motion.h2
-            className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight mb-4"
+            className="font-display text-3xl md:text-4xl leading-tight tracking-tight mb-4"
           >
             {t("apoie.heading1")} <span className="text-primary text-glow">{t("apoie.heading2")}</span>
           </motion.h2>
