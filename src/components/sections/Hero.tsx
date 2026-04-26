@@ -72,7 +72,7 @@ export function Hero() {
       {/* Layer 3 — Content */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 min-h-screen flex flex-col items-center justify-center container py-8"
+        className="relative z-10 min-h-full flex flex-col items-center justify-center container py-8"
       >
         {/* Tagline words stagger */}
         <motion.div
