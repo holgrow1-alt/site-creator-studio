@@ -59,7 +59,7 @@ export function TecnologiaSemente() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 1 }}
-              className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight mb-6"
+              className="font-display text-3xl md:text-4xl leading-tight tracking-tight mb-6"
             >
               {t("tecnologiaSemente.heading1")}<br />
               <span className="text-primary text-glow">{t("tecnologiaSemente.heading2")}</span><br />
