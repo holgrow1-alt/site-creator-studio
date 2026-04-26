@@ -12,8 +12,8 @@ class Particle {
   maxForce = 0.1;
   particleSize = 10;
   isKilled = false;
-  startColor = { r: 0, g: 255, b: 136 };
-  targetColor = { r: 0, g: 255, b: 136 };
+  startColor = { r: 34, g: 197, b: 94 };
+  targetColor = { r: 34, g: 197, b: 94 };
   colorWeight = 0;
   colorBlendRate = 0.01;
 
@@ -60,7 +60,7 @@ class Particle {
         g: this.startColor.g + (this.targetColor.g - this.startColor.g) * this.colorWeight,
         b: this.startColor.b + (this.targetColor.b - this.startColor.b) * this.colorWeight,
       };
-      this.targetColor = { r: 0, g: 0, b: 0 };
+      this.targetColor = { r: 240, g: 253, b: 244 };
       this.colorWeight = 0;
       this.isKilled = true;
     }
@@ -109,7 +109,7 @@ export function ParticleTextEffect({
       octx.textBaseline = "middle";
       octx.fillText(word, canvas.width / 2, canvas.height / 2);
       const data = octx.getImageData(0, 0, canvas.width, canvas.height).data;
-      const newColor = { r: 0, g: 255, b: 136 };
+      const newColor = { r: 34, g: 197, b: 94 };
       const particles = particlesRef.current;
       let idx = 0;
       const coords: number[] = [];
@@ -150,7 +150,7 @@ export function ParticleTextEffect({
 
     const animate = () => {
       const ctx = canvas.getContext("2d")!;
-      ctx.fillStyle = "rgba(10,10,10,0.15)";
+      ctx.fillStyle = "rgba(240,253,244,0.18)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       const particles = particlesRef.current;
       for (let i = particles.length - 1; i >= 0; i--) {

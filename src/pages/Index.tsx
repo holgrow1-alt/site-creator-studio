@@ -1,55 +1,114 @@
+import { Suspense, lazy } from "react";
+import { useTranslation } from "@/i18n/LanguageContext";
+import { LoadingScreen } from "@/components/LoadingScreen";
+import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 import { Nav } from "@/components/sections/Nav";
+// Critical above-the-fold sections — loaded eagerly
 import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { Manifesto } from "@/components/sections/Manifesto";
-import { Ecossistema } from "@/components/sections/Ecossistema";
-import { Tecnologia } from "@/components/sections/Tecnologia";
-import { Impacto } from "@/components/sections/Impacto";
-import { Footer } from "@/components/sections/Footer";
+
+// All remaining sections — lazy loaded
+const VideoShowcase = lazy(() => import("@/components/sections/VideoShowcase").then(m => ({ default: m.VideoShowcase })));
+const VisaoMissaoValores = lazy(() => import("@/components/sections/VisaoMissaoValores").then(m => ({ default: m.VisaoMissaoValores })));
+const UrgenciaAmbiental = lazy(() => import("@/components/sections/UrgenciaAmbiental").then(m => ({ default: m.UrgenciaAmbiental })));
+const InspiracaoNatural = lazy(() => import("@/components/sections/InspiracaoNatural").then(m => ({ default: m.InspiracaoNatural })));
+const Ecossistema = lazy(() => import("@/components/sections/Ecossistema").then(m => ({ default: m.Ecossistema })));
+const ComoFunciona = lazy(() => import("@/components/sections/ComoFunciona").then(m => ({ default: m.ComoFunciona })));
+const EcossistemaImpacto = lazy(() => import("@/components/sections/EcossistemaImpacto").then(m => ({ default: m.EcossistemaImpacto })));
+const CoracaoEcossistema = lazy(() => import("@/components/sections/CoracaoEcossistema").then(m => ({ default: m.CoracaoEcossistema })));
+const ImpactoCascata = lazy(() => import("@/components/sections/ImpactoCascata").then(m => ({ default: m.ImpactoCascata })));
+const SeedMovement = lazy(() => import("@/components/sections/SeedMovement").then(m => ({ default: m.SeedMovement })));
+const Tecnologia = lazy(() => import("@/components/sections/Tecnologia").then(m => ({ default: m.Tecnologia })));
+const EngenhariadoDrone = lazy(() => import("@/components/sections/EngenhariadoDrone").then(m => ({ default: m.EngenhariadoDrone })));
+const TecnologiaSemente = lazy(() => import("@/components/sections/TecnologiaSemente").then(m => ({ default: m.TecnologiaSemente })));
+const ProtocoloTecnico = lazy(() => import("@/components/sections/ProtocoloTecnico").then(m => ({ default: m.ProtocoloTecnico })));
+const JanelaDeOuro = lazy(() => import("@/components/sections/JanelaDeOuro").then(m => ({ default: m.JanelaDeOuro })));
+const MapeamentoBiologico = lazy(() => import("@/components/sections/MapeamentoBiologico").then(m => ({ default: m.MapeamentoBiologico })));
+const InfraestruturaRegenerativa = lazy(() => import("@/components/sections/InfraestruturaRegenerativa").then(m => ({ default: m.InfraestruturaRegenerativa })));
+const SistemaPlantio = lazy(() => import("@/components/sections/SistemaPlantio").then(m => ({ default: m.SistemaPlantio })));
+const AppEcoDrones = lazy(() => import("@/components/sections/AppEcoDrones").then(m => ({ default: m.AppEcoDrones })));
+const CerebroSistema = lazy(() => import("@/components/sections/CerebroSistema").then(m => ({ default: m.CerebroSistema })));
+const SegurancaOperacional = lazy(() => import("@/components/sections/SegurancaOperacional").then(m => ({ default: m.SegurancaOperacional })));
+const ModeloEconomico = lazy(() => import("@/components/sections/ModeloEconomico").then(m => ({ default: m.ModeloEconomico })));
+const ParceriasESG = lazy(() => import("@/components/sections/ParceriasESG").then(m => ({ default: m.ParceriasESG })));
+const EstrategiaRegenerativa = lazy(() => import("@/components/sections/EstrategiaRegenerativa").then(m => ({ default: m.EstrategiaRegenerativa })));
+const EngajamentoComunidade = lazy(() => import("@/components/sections/EngajamentoComunidade").then(m => ({ default: m.EngajamentoComunidade })));
+const EcossistemaEducacional = lazy(() => import("@/components/sections/EcossistemaEducacional").then(m => ({ default: m.EcossistemaEducacional })));
+const Impacto = lazy(() => import("@/components/sections/Impacto").then(m => ({ default: m.Impacto })));
+const Embaixadores = lazy(() => import("@/components/sections/Embaixadores").then(m => ({ default: m.Embaixadores })));
+const Comunidade = lazy(() => import("@/components/sections/Comunidade").then(m => ({ default: m.Comunidade })));
+const ApoieOProjeto = lazy(() => import("@/components/sections/ApoieOProjeto").then(m => ({ default: m.ApoieOProjeto })));
+const ParceiroCorporativo = lazy(() => import("@/components/sections/ParceiroCorporativo").then(m => ({ default: m.ParceiroCorporativo })));
+const ParceirosEDrones = lazy(() => import("@/components/sections/ParceirosEDrones").then(m => ({ default: m.ParceirosEDrones })));
+const Parceiros = lazy(() => import("@/components/sections/Parceiros").then(m => ({ default: m.Parceiros })));
+const RecebaPageamentos = lazy(() => import("@/components/sections/RecebaPageamentos").then(m => ({ default: m.RecebaPageamentos })));
+const ManifestoPDF = lazy(() => import("@/components/sections/ManifestoPDF").then(m => ({ default: m.ManifestoPDF })));
+const Videos = lazy(() => import("@/components/sections/Videos").then(m => ({ default: m.Videos })));
+const Fundador = lazy(() => import("@/components/sections/Fundador").then(m => ({ default: m.Fundador })));
+const VisaoFinal = lazy(() => import("@/components/sections/VisaoFinal").then(m => ({ default: m.VisaoFinal })));
+const DoacaoCripto = lazy(() => import("@/components/sections/DoacaoCripto").then(m => ({ default: m.DoacaoCripto })));
+const Footer = lazy(() => import("@/components/sections/Footer").then(m => ({ default: m.Footer })));
+
+// Minimal fallback — invisible, preserves layout flow
+const SectionFallback = () => <div className="min-h-[200px]" />;
 
 const Index = () => {
-      return (
-              <main className="relative min-h-screen bg-background text-foreground">
-                    <Nav />
-                    <Hero />
-                    
-                  {/* NOVA SEÇÃO: LOGO COM EFEITO DE LUZES */}
-                    <div className="relative w-full py-20 md:py-32 flex items-center justify-center bg-black overflow-hidden">
-                        {/* Fundo com efeito de luzes verdes */}
-                            <div className="absolute inset-0 w-full h-full">
-                                {/* Gradiente de fundo */}
-                                      <div className="absolute inset-0 bg-gradient-to-b from-black via-green-900/30 to-black" />
-                                      
-                                {/* Luz verde grande (blur) */}
-                                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-500/25 rounded-full blur-3xl" />
-                                      
-                                {/* Luz verde animada pulsante */}
-                                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-green-400/15 rounded-full blur-2xl animate-pulse" />
-                            </div>div>
-                            
-                        {/* LOGO */}
-                            <div className="relative z-20 flex flex-col items-center justify-center gap-8">
-                                {/* Hexágono do logo com cores EcoDrones */}
-                                      <div className="w-40 h-40 md:w-48 md:h-48 flex items-center justify-center rounded-lg overflow-hidden shadow-2xl bg-gradient-to-br from-green-400 via-emerald-500 to-teal-600 border-4 border-green-300 animate-pulse">
-                                                  <div className="text-center">
-                                                                <div className="text-6xl md:text-7xl font-bold text-white">🌱</div>div>
-                                                                <div className="text-white text-sm md:text-lg font-semibold mt-2">DRONES</div>div>
-                                                  </div>div>
-                                      </div>div>
-                                      
-                                {/* Texto abaixo do logo */}
-                                      <p className="text-center text-green-400 text-xs md:text-sm font-light tracking-wider uppercase">Tecnologia de Regeneração</p>p>
-                            </div>div>
-                    </div>div>
-                    
-                    <Marquee words={["REGENERAÇÃO", "REFLORESTAMENTO", "DRONES", "FLORESTAS", "COMUNIDADE", "AÇÃO"]} />
-                    <Manifesto />
-                    <Ecossistema />
-                    <Tecnologia />
-                    <Impacto />
-                    <Footer />
-              </main>main>
-            );
+  const { t } = useTranslation();
+  return (
+    <main className="relative min-h-screen bg-background text-foreground">
+      <LoadingScreen />
+      <ScrollProgressBar />
+      <Nav />
+      {/* Above-the-fold — eager */}
+      <Hero />
+      <Marquee words={t("marquee.words").split(",")} />
+      <Manifesto />
+      {/* Everything below — lazy */}
+      <Suspense fallback={<SectionFallback />}>
+        <VideoShowcase />
+        <VisaoMissaoValores />
+        <UrgenciaAmbiental />
+        <InspiracaoNatural />
+        <Ecossistema />
+        <ComoFunciona />
+        <EcossistemaImpacto />
+        <CoracaoEcossistema />
+        <ImpactoCascata />
+        <SeedMovement />
+        <Tecnologia />
+        <EngenhariadoDrone />
+        <TecnologiaSemente />
+        <ProtocoloTecnico />
+        <JanelaDeOuro />
+        <MapeamentoBiologico />
+        <InfraestruturaRegenerativa />
+        <SistemaPlantio />
+        <AppEcoDrones />
+        <CerebroSistema />
+        <SegurancaOperacional />
+        <ModeloEconomico />
+        <ParceriasESG />
+        <EstrategiaRegenerativa />
+        <EngajamentoComunidade />
+        <EcossistemaEducacional />
+        <Impacto />
+        <Embaixadores />
+        <Comunidade />
+        <ApoieOProjeto />
+        <ParceiroCorporativo />
+        <ParceirosEDrones />
+        <Parceiros />
+        <RecebaPageamentos />
+        <ManifestoPDF />
+        <Videos />
+        <Fundador />
+        <VisaoFinal />
+        <DoacaoCripto />
+        <Footer />
+      </Suspense>
+    </main>
+  );
 };
 
-export default Index;</main>
+export default Index;
