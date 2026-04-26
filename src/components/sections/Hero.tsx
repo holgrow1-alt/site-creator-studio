@@ -22,7 +22,6 @@ export function Hero() {
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  // Parallax layers
   const droneY = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [0, 300]);
   const droneScale = useTransform(scrollYProgress, [0, 1], [1, reduced ? 1 : 1.2]);
   const gridY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 80]);
@@ -34,11 +33,8 @@ export function Hero() {
 
   return (
     <section id="hero" ref={ref} className="relative min-h-[480px] md:min-h-[560px] w-full overflow-hidden grain">
-      {/* Layer 0 — Drone background (slowest) */}
-      <motion.div
-        style={{ y: droneY, scale: droneScale }}
-        className="absolute inset-0 z-0"
-      >
+      {/* Layer 0 — Drone background */}
+      <motion.div style={{ y: droneY, scale: droneScale }} className="absolute inset-0 z-0">
         <img
           src={drone}
           alt="Drone EcoDrones para reflorestamento"
@@ -51,7 +47,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/60" />
       </motion.div>
 
-      {/* Layer 1 — Grid (medium speed) */}
+      {/* Layer 1 — Grid */}
       <motion.div
         className="absolute inset-0 z-[1] opacity-20"
         style={{
@@ -61,7 +57,7 @@ export function Hero() {
         } as React.CSSProperties}
       />
 
-      {/* Layer 2 — Radial glow (fades on scroll) */}
+      {/* Layer 2 — Radial glow */}
       <motion.div
         style={{ opacity: glowOpacity }}
         className="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none"
@@ -72,9 +68,9 @@ export function Hero() {
       {/* Layer 3 — Content */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 min-h-full flex flex-col items-center justify-center container py-8"
+        className="relative z-10 min-h-full flex flex-col items-center justify-center container py-8 pb-20"
       >
-        {/* Tagline words stagger */}
+        {/* Tagline */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -83,9 +79,7 @@ export function Hero() {
         >
           <motion.span variants={wordVariant} className="w-12 h-px bg-primary" />
           {taglineWords.map((word, i) => (
-            <motion.span key={i} variants={wordVariant}>
-              {word}
-            </motion.span>
+            <motion.span key={i} variants={wordVariant}>{word}</motion.span>
           ))}
           <motion.span variants={wordVariant} className="w-12 h-px bg-primary" />
         </motion.div>
@@ -123,12 +117,10 @@ export function Hero() {
           />
         </motion.div>
 
-        {/* Sparkles below logo — strictly below, pointer-events-none, low z-index */}
-        <div className="w-[32rem] max-w-full h-12 relative pointer-events-none" style={{ zIndex: 1 }}>
-          {/* Linha gradiente decorativa */}
+        {/* Sparkles — attached directly below logo, full visibility */}
+        <div className="w-[32rem] max-w-full h-16 relative pointer-events-none" style={{ zIndex: 1 }}>
           <div className="absolute inset-x-16 top-0 bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-[2px] w-3/4 blur-sm" />
           <div className="absolute inset-x-16 top-0 bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-px w-3/4" />
-
           <SparklesCore
             background="transparent"
             minSize={0.4}
@@ -140,25 +132,16 @@ export function Hero() {
           />
         </div>
 
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="font-display text-2xl md:text-3xl leading-[0.85] text-center text-foreground tracking-tight"
-        >
-          {t("hero.title1")}<span className="text-primary text-glow-strong">{t("hero.title2")}</span>
-        </motion.h1>
-
+        {/* Body — prominent tagline, bold */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="mt-8 max-w-2xl text-center text-base md:text-lg text-foreground/70 font-light leading-relaxed"
+          className="mt-4 max-w-2xl text-center text-xl md:text-2xl text-foreground/90 font-bold leading-snug"
         >
           {t("hero.body")}
           <br />
-          <span className="text-primary font-mono text-xs uppercase tracking-widest mt-3 inline-block">
+          <span className="text-primary font-mono text-xs uppercase tracking-widest mt-3 inline-block font-normal">
             {t("hero.badge")}
           </span>
         </motion.p>
@@ -168,7 +151,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.8 }}
-          className="mt-10 flex flex-col sm:flex-row items-center gap-4"
+          className="mt-8 flex flex-col sm:flex-row items-center gap-4"
         >
           <motion.a
             href="#comunidade"
@@ -185,21 +168,21 @@ export function Hero() {
             {t("hero.ctaSecondary")}
           </a>
         </motion.div>
+      </motion.div>
 
-        {/* Scroll indicator */}
+      {/* Scroll indicator — relative to section, never clips */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 text-primary/70"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em]">{t("hero.scrollIndicator")}</span>
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-primary/70"
+          animate={reduced ? {} : { y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em]">{t("hero.scrollIndicator")}</span>
-          <motion.div
-            animate={reduced ? {} : { y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <ArrowDown className="w-4 h-4" />
-          </motion.div>
+          <ArrowDown className="w-4 h-4" />
         </motion.div>
       </motion.div>
 
