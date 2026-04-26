@@ -58,7 +58,7 @@ export function Manifesto() {
         </motion.div>
 
         <div className="grid lg:grid-cols-12 gap-4 lg:gap-6 items-start">
-          <h2 className="lg:col-span-7 font-display text-xl md:text-2xl leading-[0.95] tracking-tight">
+          <h2 className="lg:col-span-7 font-display text-3xl md:text-4xl leading-tight tracking-tight">
             <SplitWords text={t("manifesto.heading1")} delay={0} /> <SplitWords text={t("manifesto.heading2")} delay={0.1} /> <SplitWords
               text={t("manifesto.heading3")}
               delay={0.2}
