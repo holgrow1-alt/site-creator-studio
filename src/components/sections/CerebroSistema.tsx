@@ -43,7 +43,7 @@ export function CerebroSistema() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 1 }}
-              className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight mb-4"
+              className="font-display text-3xl md:text-4xl leading-tight tracking-tight mb-4"
             >
               {t("cerebro.heading1")} {t("cerebro.heading2")} <span className="text-primary text-glow">{t("cerebro.heading3")}</span>
             </motion.h2>
