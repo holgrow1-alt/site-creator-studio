@@ -103,7 +103,7 @@ export function Fundador() {
             className="relative"
           >
             {/* Glowing border frame */}
-            <div className="relative max-w-md mx-auto lg:mx-0">
+            <div className="relative max-w-xs mx-auto lg:mx-0">
               <div
                 className="absolute -inset-1 rounded-2xl blur-sm opacity-60"
                 style={{
@@ -135,7 +135,7 @@ export function Fundador() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-6 max-w-md mx-auto lg:mx-0 glass rounded-xl px-5 py-4 border border-primary/20"
+              className="mt-4 max-w-xs mx-auto lg:mx-0 glass rounded-xl px-5 py-4 border border-primary/20"
             >
               <div className="font-mono text-[10px] uppercase tracking-widest text-primary/70 mb-1">Filosofia</div>
               <p className="text-sm text-foreground/70 italic font-light">
