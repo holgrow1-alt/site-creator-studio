@@ -289,7 +289,7 @@ export function Nav() {
           }}
           className="flex items-center gap-3 group flex-shrink-0"
         >
-          <div className="relative w-[80px] h-[80px] -my-3">
+          <div className="relative w-[52px] h-[52px] -my-1">
             <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full group-hover:bg-primary/40 transition-all duration-700" />
             <img
               src={logo}
