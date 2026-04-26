@@ -73,7 +73,7 @@ export function CoracaoEcossistema() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 1 }}
-          className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight max-w-5xl mb-4"
+          className="font-display text-3xl md:text-4xl leading-tight tracking-tight max-w-5xl mb-4"
         >
           {t("coracao.heading1")} <span className="text-primary text-glow">{t("coracao.heading2")}</span> {t("coracao.heading3")}
         </motion.h2>
