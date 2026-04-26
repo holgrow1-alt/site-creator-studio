@@ -226,7 +226,7 @@ export function ParceirosEDrones() {
             </span>
             <div className="h-px flex-1 min-w-0" style={{ background: "rgba(22,163,74,0.2)" }} />
             <h3
-              className="font-display text-xl md:text-2xl flex-shrink-0"
+              className="font-display text-3xl md:text-4xl leading-tight tracking-tight flex-shrink-0"
               style={{ color: "#052e16" }}
             >
               PARCEIROS TÉCNICOS
@@ -550,7 +550,7 @@ export function ParceirosEDrones() {
             </span>
             <div className="h-px flex-1 min-w-0" style={{ background: "rgba(22,163,74,0.2)" }} />
             <h3
-              className="font-display text-xl md:text-2xl flex-shrink-0"
+              className="font-display text-3xl md:text-4xl leading-tight tracking-tight flex-shrink-0"
               style={{ color: "#052e16" }}
             >
               PROGRAMA DE DRONES
@@ -660,7 +660,7 @@ export function ParceirosEDrones() {
                     Próximo Sorteio
                   </div>
                   <h5
-                    className="font-display text-xl md:text-2xl mb-2"
+                    className="font-display text-3xl md:text-4xl leading-tight tracking-tight mb-2"
                     style={{ color: "#ffffff" }}
                   >
                     SORTEIO DO MÊS
