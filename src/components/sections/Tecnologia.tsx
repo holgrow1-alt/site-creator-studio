@@ -151,11 +151,9 @@ export function Tecnologia() {
               <span>{t("tecnologia.sectionSub")}</span>
             </motion.div>
 
-            <h2 className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight">
-              <SplitWords text={t("tecnologia.heading1")} delay={0} />
-              <br />
-              <SplitWords text={t("tecnologia.heading2")} delay={0.1} />
-              <br />
+            <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight">
+              <SplitWords text={t("tecnologia.heading1")} delay={0} />{" "}
+              <SplitWords text={t("tecnologia.heading2")} delay={0.1} />{" "}
               <SplitWords text={t("tecnologia.heading3")} delay={0.2} className="text-primary text-glow" />
             </h2>
 
