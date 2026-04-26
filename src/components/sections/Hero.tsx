@@ -133,7 +133,7 @@ export function Hero() {
             background="transparent"
             minSize={0.4}
             maxSize={1.2}
-            particleDensity={400}
+            particleDensity={120}
             className="w-full h-full"
             particleColor="#16a34a"
             speed={1.5}
