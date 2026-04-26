@@ -9,7 +9,7 @@ import { Marquee } from "@/components/sections/Marquee";
 import { Manifesto } from "@/components/sections/Manifesto";
 
 // All remaining sections — lazy loaded
-const VideoShowcase = lazy(() => import("@/components/sections/VideoShowhcase").then(m => ({ default: m.VideoShowcase })));
+const Videos = lazy(() => import("@/components/sections/Videos").then(m => ({ default: m.Videos })));
 const VisaoMissaoValores = lazy(() => import("@/components/sections/VisaoMissaoValores").then(m => ({ default: m.VisaoMissaoValores })));
 const UrgenciaAmbiental = lazy(() => import("@/components/sections/UrgenciaAmbiental").then(m => ({ default: m.UrgenciaAmbiental })));
 const InspiracaoNatural = lazy(() => import("@/components/sections/InspiracaoNatural").then(m => ({ default: m.InspiracaoNatural })));
@@ -66,7 +66,7 @@ const Index = () => {
       <Manifesto />
       {/* Everything below — lazy */}
       <Suspense fallback={<SectionFallback />}>
-        <VideoShowcase />
+        <Videos />
         <VisaoMissaoValores />
         <UrgenciaAmbiental />
         <InspiracaoNatural />
