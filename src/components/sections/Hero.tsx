@@ -111,7 +111,7 @@ export function Hero() {
           <motion.img
             src={logo}
             alt="EcoDrones Community"
-            className="relative w-[280px] md:w-[460px] lg:w-[520px] h-auto"
+            className="relative w-[180px] md:w-[280px] lg:w-[320px] h-auto"
             animate={reduced ? {} : {
               filter: [
                 "drop-shadow(0 4px 20px rgba(34,197,94,0.3))",
