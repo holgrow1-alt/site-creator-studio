@@ -35,12 +35,10 @@ export function Manifesto() {
   const { t } = useTranslation();
 
   return (
-    <section id="manifesto" className="relative py-8 md:py-10 overflow-hidden section-cream leaf-pattern">
-      {/* Decorative blobs */}
+    <section id="manifesto" className="relative py-6 md:py-8 overflow-hidden section-cream leaf-pattern">
       <div className="blob-green-tl opacity-70" />
       <div className="blob-gold-br opacity-60" />
       <div className="container">
-        {/* Section label with extending line */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -59,8 +57,7 @@ export function Manifesto() {
           <span>{t("manifesto.sectionSub")}</span>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
-          {/* Heading — split by line with word stagger */}
+        <div className="grid lg:grid-cols-12 gap-4 lg:gap-6 items-start">
           <h2 className="lg:col-span-7 font-display text-xl md:text-2xl leading-[0.95] tracking-tight">
             <SplitWords text={t("manifesto.heading1")} delay={0} /> <SplitWords text={t("manifesto.heading2")} delay={0.1} /> <SplitWords
               text={t("manifesto.heading3")}
@@ -69,8 +66,7 @@ export function Manifesto() {
             />
           </h2>
 
-          {/* Body text — line by line */}
-          <div className="lg:col-span-5 space-y-6 text-lg text-foreground/70 leading-relaxed font-light pt-8">
+          <div className="lg:col-span-5 space-y-3 text-base text-foreground/70 leading-relaxed font-light pt-2">
             {[
               <>{t("manifesto.body1")}</>,
               <>{t("manifesto.body2")}</>,
@@ -88,13 +84,12 @@ export function Manifesto() {
           </div>
         </div>
 
-        {/* Particle Text Effect */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.5, delay: 0.3 }}
-          className="mt-16 relative rounded-lg overflow-hidden border border-primary/20 bg-background glow-border"
+          className="mt-8 relative rounded-lg overflow-hidden border border-primary/20 bg-background glow-border"
         >
           <div className="absolute top-4 left-4 z-10 font-mono text-[10px] uppercase tracking-widest text-primary/60">
             {t("manifesto.particleLabel")}
