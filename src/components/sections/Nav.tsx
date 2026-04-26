@@ -294,6 +294,8 @@ export function Nav() {
             <img
               src={logo}
               alt={t("nav.logoAlt")}
+              width={80}
+              height={80}
               className="relative w-full h-full object-contain"
             />
           </div>

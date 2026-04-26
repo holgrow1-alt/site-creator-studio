@@ -397,7 +397,7 @@ export function ParceiroCorporativo() {
                   style={{
                     background: "rgba(255,255,255,0.04)",
                     border: "1px solid rgba(255,255,255,0.08)",
-                    transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)",
+                    transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), background 0.4s cubic-bezier(0.16,1,0.3,1)",
                   }}
                 >
                   {/* hover accent line */}

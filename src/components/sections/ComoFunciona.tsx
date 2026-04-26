@@ -44,7 +44,7 @@ export function ComoFunciona() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 1 }}
-          className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight max-w-5xl mb-6"
+          className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight max-w-5xl mb-4"
         >
           {t("comoFunciona.heading")}
         </motion.h2>
@@ -53,7 +53,7 @@ export function ComoFunciona() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg text-foreground/60 font-light mb-6 max-w-2xl"
+          className="text-lg text-foreground/60 font-light mb-4 max-w-2xl"
         >
           {t("comoFunciona.subhead")}
         </motion.p>
@@ -104,7 +104,7 @@ export function ComoFunciona() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {cycleSteps.map((step, i) => {
             const Icon = step.icon;
             return (

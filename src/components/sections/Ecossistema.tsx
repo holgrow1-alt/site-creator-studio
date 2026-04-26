@@ -78,7 +78,7 @@ export function Ecossistema() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1 }}
-          className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight max-w-5xl mb-6"
+          className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight max-w-5xl mb-4"
         >
           {t("ecossistema.heading1")} Um <span className="text-primary text-glow">propósito</span>.
         </motion.h2>

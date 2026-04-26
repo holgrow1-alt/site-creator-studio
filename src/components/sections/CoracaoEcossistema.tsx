@@ -73,7 +73,7 @@ export function CoracaoEcossistema() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 1 }}
-          className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight max-w-5xl mb-6"
+          className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight max-w-5xl mb-4"
         >
           {t("coracao.heading1")} <span className="text-primary text-glow">{t("coracao.heading2")}</span> {t("coracao.heading3")}
         </motion.h2>
@@ -83,12 +83,12 @@ export function CoracaoEcossistema() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg text-foreground/60 font-light mb-6 max-w-2xl"
+          className="text-lg text-foreground/60 font-light mb-4 max-w-2xl"
         >
           {t("coracao.subhead")}
         </motion.p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
           {columns.map((col, i) => {
             const Icon = col.icon;
             return (

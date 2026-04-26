@@ -33,7 +33,7 @@ export function Hero() {
   const taglineWords = t("hero.tagline").split(" ");
 
   return (
-    <section id="hero" ref={ref} className="relative min-h-screen w-full overflow-hidden grain">
+    <section id="hero" ref={ref} className="relative min-h-[480px] md:min-h-[560px] w-full overflow-hidden grain">
       {/* Layer 0 — Drone background (slowest) */}
       <motion.div
         style={{ y: droneY, scale: droneScale }}
@@ -42,6 +42,9 @@ export function Hero() {
         <img
           src={drone}
           alt="Drone EcoDrones para reflorestamento"
+          width={1200}
+          height={800}
+          fetchPriority="high"
           className="w-full h-full object-cover opacity-55"
         />
         <div className="absolute inset-0 gradient-hero" />

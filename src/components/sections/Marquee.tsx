@@ -36,7 +36,7 @@ export function Marquee({ words }: Props) {
 
   return (
     <div
-      className="relative overflow-hidden border-y border-primary/20 bg-background py-1.5 cursor-default select-none"
+      className="relative overflow-hidden border-y border-primary/20 bg-background py-1.5 cursor-default select-none z-40"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       aria-hidden="true"

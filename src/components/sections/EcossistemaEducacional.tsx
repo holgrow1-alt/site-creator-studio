@@ -40,7 +40,7 @@ export function EcossistemaEducacional() {
           />
           <span>{t("educacional.sectionSub")}</span>
         </motion.div>
-        <div className="grid lg:grid-cols-2 gap-8 mb-6 items-start">
+        <div className="grid lg:grid-cols-2 gap-4 mb-6 items-start">
           <div>
             <motion.h2
               initial={{ opacity: 0, y: 40 }}

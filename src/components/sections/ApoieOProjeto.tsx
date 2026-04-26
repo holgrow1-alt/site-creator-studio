@@ -55,7 +55,7 @@ export function ApoieOProjeto() {
   ];
 
   return (
-    <section id="apoie" className="relative py-8 md:py-10 overflow-hidden section-cream">
+    <section id="apoie" className="relative py-6 md:py-8 overflow-hidden section-cream">
       <div className="blob-green-tl opacity-50" />
       <div className="blob-sky-tr opacity-40" />
       <div className="container">
@@ -103,7 +103,7 @@ export function ApoieOProjeto() {
         </motion.div>
 
         {/* 3 caminhos */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid md:grid-cols-3 gap-4 mb-8">
           {paths.map((path, i) => {
             const Icon = path.icon;
             return (
@@ -168,7 +168,7 @@ export function ApoieOProjeto() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="glass rounded-lg p-5 border border-primary/20"
+          className="glass rounded-lg p-4 border border-primary/20"
         >
           <div className="font-mono text-xs uppercase tracking-widest text-primary mb-4">{t("apoie.transparencyLabel")}</div>
           <h3 className="font-display text-2xl text-foreground mb-4">{t("apoie.transparencyTitle")}</h3>
