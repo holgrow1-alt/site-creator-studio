@@ -61,7 +61,7 @@ function AnimatedCallout() {
         hidden: {},
         visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
       }}
-      className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight text-center"
+      className="font-display text-3xl md:text-4xl leading-tight tracking-tight text-center"
       aria-label="Cada voo planta esperança"
     >
       {CALL_WORDS.map((word, i) => (
