@@ -1,15 +1,19 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, UserCircle } from "lucide-react";
+import { Menu, X, ChevronDown, UserCircle, PanelRight } from "lucide-react";
 import logo from "@/assets/logo-ecodrones.png";
 import { useTranslation } from "@/i18n/LanguageContext";
 import type { Language } from "@/i18n/LanguageContext";
+import { openDrawer } from "./SectionDrawer";
 
 const LANGS: { code: Language; flag: string; label: string }[] = [
   { code: "pt", flag: "🇧🇷", label: "PT" },
   { code: "es", flag: "🇪🇸", label: "ES" },
   { code: "en", flag: "🇺🇸", label: "EN" },
 ];
+
+// Grupos que abrem o painel lateral (drawer)
+const DRAWER_GROUPS = ["Sobre", "Tecnologia", "Ecossistema", "Comunidade", "Parceiros"];
 
 interface NavItem {
   label: string;
@@ -21,9 +25,9 @@ const NAV_GROUPS: NavItem[] = [
   {
     label: "Sobre",
     children: [
-      { label: "Início", href: "#hero" },
-      { label: "Manifesto", href: "#manifesto" },
+      { label: "Missão & Valores", href: "#visao" },
       { label: "Urgência Ambiental", href: "#urgencia" },
+      { label: "Inspiração Natural", href: "#inspiracao" },
     ],
   },
   {
@@ -32,7 +36,6 @@ const NAV_GROUPS: NavItem[] = [
       { label: "Como Funciona", href: "#como-funciona" },
       { label: "Engenharia do Drone", href: "#engenharia-drone" },
       { label: "Cérebro do Sistema", href: "#cerebro-ia" },
-      { label: "Protocolo Técnico", href: "#protocolo" },
       { label: "Segurança", href: "#seguranca" },
       { label: "Tecnologia", href: "#tecnologia" },
     ],
@@ -43,7 +46,6 @@ const NAV_GROUPS: NavItem[] = [
       { label: "Ecossistema", href: "#ecossistema" },
       { label: "Impacto em Cascata", href: "#impacto-cascata" },
       { label: "Coração do Ecossistema", href: "#coracao" },
-      { label: "Inspiração Natural", href: "#inspiracao" },
       { label: "SEED Movement", href: "#seed-movement" },
     ],
   },
@@ -59,10 +61,8 @@ const NAV_GROUPS: NavItem[] = [
   {
     label: "Parceiros",
     children: [
-      { label: "Parceiro Corporativo", href: "#parceiro-corporativo" },
       { label: "Modelo Econômico", href: "#modelo" },
       { label: "Parcerias ESG", href: "#esg" },
-      { label: "Estratégia Regenerativa", href: "#estrategia-regenerativa" },
       { label: "Parceiros", href: "#parceiros" },
       { label: "Receba Pagamentos", href: "#receba" },
     ],
@@ -70,8 +70,7 @@ const NAV_GROUPS: NavItem[] = [
   {
     label: "Mídia",
     children: [
-      { label: "Vídeos", href: "#video-showcase" },
-      { label: "Vídeos Externos", href: "#videos" },
+      { label: "Vídeos", href: "#videos" },
       { label: "Manifesto PDF", href: "#manifesto-pdf" },
     ],
   },
@@ -90,12 +89,27 @@ function smoothScroll(href: string) {
     return;
   }
   const el = document.querySelector(href);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function DesktopDropdown({ item, delay }: { item: NavItem; delay: number }) {
+function DrawerGroupButton({ item, delay }: { item: NavItem; delay: number }) {
+  return (
+    <motion.button
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay }}
+      onClick={() => openDrawer(item.label)}
+      className="flex items-center gap-1 text-xs uppercase tracking-[0.18em] font-medium text-foreground/70 hover:text-primary transition-colors duration-300 relative group py-2"
+      title={`Abrir painel: ${item.label}`}
+    >
+      {item.label}
+      <PanelRight className="w-2.5 h-2.5 opacity-40 group-hover:opacity-80 transition-opacity" />
+      <span className="absolute -bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-500" />
+    </motion.button>
+  );
+}
+
+function ScrollDropdown({ item, delay }: { item: NavItem; delay: number }) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -115,10 +129,7 @@ function DesktopDropdown({ item, delay }: { item: NavItem; delay: number }) {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay }}
-        onClick={(e) => {
-          e.preventDefault();
-          smoothScroll(item.href!);
-        }}
+        onClick={(e) => { e.preventDefault(); smoothScroll(item.href!); }}
         className="text-xs uppercase tracking-[0.18em] font-medium text-foreground/70 hover:text-primary transition-colors duration-300 relative group py-2"
       >
         {item.label}
@@ -128,11 +139,7 @@ function DesktopDropdown({ item, delay }: { item: NavItem; delay: number }) {
   }
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <motion.button
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -140,10 +147,7 @@ function DesktopDropdown({ item, delay }: { item: NavItem; delay: number }) {
         className="flex items-center gap-1 text-xs uppercase tracking-[0.18em] font-medium text-foreground/70 hover:text-primary transition-colors duration-300 relative group py-2"
       >
         {item.label}
-        <motion.span
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
+        <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
           <ChevronDown className="w-3 h-3 opacity-60" />
         </motion.span>
         <span className="absolute -bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-500" />
@@ -158,18 +162,13 @@ function DesktopDropdown({ item, delay }: { item: NavItem; delay: number }) {
             transition={{ duration: 0.18, ease: "easeOut" }}
             className="absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-[200px] z-50 bg-background/95 backdrop-blur-xl border border-border/60 rounded-xl shadow-2xl shadow-black/40 overflow-hidden"
           >
-            {/* Green accent line */}
             <div className="h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
             <div className="py-2">
-              {item.children.map((child) => (
+              {item.children!.map((child) => (
                 <a
                   key={child.href}
                   href={child.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpen(false);
-                    smoothScroll(child.href);
-                  }}
+                  onClick={(e) => { e.preventDefault(); setOpen(false); smoothScroll(child.href); }}
                   className="flex items-center px-4 py-2.5 text-xs text-foreground/70 hover:text-primary hover:bg-primary/5 transition-all duration-200 group"
                 >
                   <span className="w-1 h-1 rounded-full bg-primary/40 mr-2.5 group-hover:bg-primary transition-colors duration-200" />
@@ -184,24 +183,27 @@ function DesktopDropdown({ item, delay }: { item: NavItem; delay: number }) {
   );
 }
 
-function MobileGroup({
-  item,
-  onClose,
-}: {
-  item: NavItem;
-  onClose: () => void;
-}) {
+function MobileGroup({ item, onClose }: { item: NavItem; onClose: () => void }) {
   const [open, setOpen] = useState(false);
+  const isDrawer = DRAWER_GROUPS.includes(item.label);
+
+  if (isDrawer) {
+    return (
+      <button
+        onClick={() => { onClose(); openDrawer(item.label); }}
+        className="w-full flex items-center justify-between py-3 text-sm uppercase tracking-widest text-foreground/80 hover:text-primary transition-colors border-b border-border/30"
+      >
+        <span>{item.label}</span>
+        <PanelRight className="w-3.5 h-3.5 opacity-50" />
+      </button>
+    );
+  }
 
   if (!item.children) {
     return (
       <a
         href={item.href}
-        onClick={(e) => {
-          e.preventDefault();
-          onClose();
-          smoothScroll(item.href!);
-        }}
+        onClick={(e) => { e.preventDefault(); onClose(); smoothScroll(item.href!); }}
         className="flex items-center py-3 text-sm uppercase tracking-widest text-foreground/80 hover:text-primary transition-colors border-b border-border/30"
       >
         {item.label}
@@ -216,10 +218,7 @@ function MobileGroup({
         onClick={() => setOpen(!open)}
       >
         <span>{item.label}</span>
-        <motion.span
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
+        <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
           <ChevronDown className="w-4 h-4 opacity-60" />
         </motion.span>
       </button>
@@ -238,11 +237,7 @@ function MobileGroup({
                 <a
                   key={child.href}
                   href={child.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onClose();
-                    smoothScroll(child.href);
-                  }}
+                  onClick={(e) => { e.preventDefault(); onClose(); smoothScroll(child.href); }}
                   className="flex items-center py-2 text-xs text-foreground/60 hover:text-primary transition-colors group"
                 >
                   <span className="w-1 h-1 rounded-full bg-primary/40 mr-2 group-hover:bg-primary transition-colors" />
@@ -274,41 +269,31 @@ export function Nav() {
       animate={{ y: 0 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border"
-          : "bg-transparent"
+        scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border" : "bg-transparent"
       }`}
     >
       <div className="container flex items-center justify-between py-3">
-        {/* Logo */}
         <a
           href="#hero"
-          onClick={(e) => {
-            e.preventDefault();
-            smoothScroll("#hero");
-          }}
+          onClick={(e) => { e.preventDefault(); smoothScroll("#hero"); }}
           className="flex items-center gap-3 group flex-shrink-0"
         >
           <div className="relative w-[52px] h-[52px] -my-1">
             <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full group-hover:bg-primary/40 transition-all duration-700" />
-            <img
-              src={logo}
-              alt={t("nav.logoAlt")}
-              width={80}
-              height={80}
-              className="relative w-full h-full object-contain"
-            />
+            <img src={logo} alt={t("nav.logoAlt")} width={80} height={80}
+              className="relative w-full h-full object-contain" />
           </div>
         </a>
 
-        {/* Desktop nav */}
         <nav className="hidden xl:flex items-center gap-5">
-          {NAV_GROUPS.map((item, i) => (
-            <DesktopDropdown key={item.label} item={item} delay={0.4 + i * 0.06} />
-          ))}
+          {NAV_GROUPS.map((item, i) => {
+            const isDrawer = DRAWER_GROUPS.includes(item.label);
+            return isDrawer
+              ? <DrawerGroupButton key={item.label} item={item} delay={0.4 + i * 0.06} />
+              : <ScrollDropdown key={item.label} item={item} delay={0.4 + i * 0.06} />;
+          })}
         </nav>
 
-        {/* Desktop right controls */}
         <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
           <div className="flex items-center gap-1 bg-background/60 backdrop-blur border border-border rounded-full px-2 py-1">
             {LANGS.map((lang) => (
@@ -330,7 +315,6 @@ export function Nav() {
             ))}
           </div>
 
-          {/* Fundador — dedicated highlighted button */}
           <motion.a
             href="#fundador"
             initial={{ opacity: 0, y: -10 }}
@@ -338,10 +322,7 @@ export function Nav() {
             transition={{ delay: 0.9 }}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            onClick={(e) => {
-              e.preventDefault();
-              smoothScroll("#fundador");
-            }}
+            onClick={(e) => { e.preventDefault(); smoothScroll("#fundador"); }}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-primary/40 bg-primary/8 text-primary hover:bg-primary/15 hover:border-primary/70 transition-all duration-300 text-xs font-semibold uppercase tracking-wider"
           >
             <UserCircle className="w-3.5 h-3.5" />
@@ -350,17 +331,13 @@ export function Nav() {
 
           <a
             href="#apoie"
-            onClick={(e) => {
-              e.preventDefault();
-              smoothScroll("#apoie");
-            }}
+            onClick={(e) => { e.preventDefault(); smoothScroll("#apoie"); }}
             className="btn-neon"
           >
             {t("nav.cta")} <span className="text-base"></span>
           </a>
         </div>
 
-        {/* Mobile hamburger */}
         <button
           className="xl:hidden text-foreground p-2"
           onClick={() => setOpen(!open)}
@@ -370,7 +347,6 @@ export function Nav() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -384,15 +360,11 @@ export function Nav() {
                 <MobileGroup key={item.label} item={item} onClose={() => setOpen(false)} />
               ))}
 
-              {/* Mobile language selector */}
               <div className="flex items-center gap-2 pt-4 pb-2">
                 {LANGS.map((lang) => (
                   <button
                     key={lang.code}
-                    onClick={() => {
-                      setLanguage(lang.code);
-                      setOpen(false);
-                    }}
+                    onClick={() => { setLanguage(lang.code); setOpen(false); }}
                     className={`text-xs px-3 py-1.5 rounded-full font-medium border transition-all duration-300 ${
                       language === lang.code
                         ? "bg-primary text-white border-primary"
@@ -404,14 +376,9 @@ export function Nav() {
                 ))}
               </div>
 
-              {/* Fundador — dedicated highlighted link (mobile) */}
               <a
                 href="#fundador"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpen(false);
-                  smoothScroll("#fundador");
-                }}
+                onClick={(e) => { e.preventDefault(); setOpen(false); smoothScroll("#fundador"); }}
                 className="mt-3 flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-primary/50 bg-primary/10 text-primary font-semibold text-xs uppercase tracking-wider transition-all duration-300 hover:bg-primary/20"
               >
                 <UserCircle className="w-4 h-4" />
@@ -420,11 +387,7 @@ export function Nav() {
 
               <a
                 href="#apoie"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpen(false);
-                  smoothScroll("#apoie");
-                }}
+                onClick={(e) => { e.preventDefault(); setOpen(false); smoothScroll("#apoie"); }}
                 className="mt-2 btn-neon justify-center"
               >
                 {t("nav.cta")}
