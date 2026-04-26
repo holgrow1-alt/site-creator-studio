@@ -61,7 +61,7 @@ export function EngenhariadoDrone() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 1 }}
-          className="font-display text-xl md:text-2xl leading-snug tracking-tight max-w-5xl mb-4"
+          className="font-display text-3xl md:text-4xl leading-tight tracking-tight max-w-5xl mb-4"
         >
           {t("engenharia.heading1")} <span className="text-primary text-glow">{t("engenharia.heading2")}</span> {t("engenharia.heading3")}
         </motion.h2>
