@@ -47,7 +47,7 @@ export function EcossistemaEducacional() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="font-display text-xl md:text-2xl leading-[0.95] tracking-tight mb-4"
+              className="font-display text-3xl md:text-4xl leading-tight tracking-tight mb-4"
             >
               {t("educacional.heading")}
             </motion.h2>
