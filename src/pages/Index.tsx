@@ -20,9 +20,6 @@ const ImpactoCascata = lazy(() => import("@/components/sections/ImpactoCascata")
 const SeedMovement = lazy(() => import("@/components/sections/SeedMovement").then(m => ({ default: m.SeedMovement })));
 const Tecnologia = lazy(() => import("@/components/sections/Tecnologia").then(m => ({ default: m.Tecnologia })));
 const EngenhariadoDrone = lazy(() => import("@/components/sections/EngenhariadoDrone").then(m => ({ default: m.EngenhariadoDrone })));
-const TecnologiaSemente = lazy(() => import("@/components/sections/TecnologiaSemente").then(m => ({ default: m.TecnologiaSemente })));
-const ProtocoloTecnico = lazy(() => import("@/components/sections/ProtocoloTecnico").then(m => ({ default: m.ProtocoloTecnico })));
-const JanelaDeOuro = lazy(() => import("@/components/sections/JanelaDeOuro").then(m => ({ default: m.JanelaDeOuro })));
 const MapeamentoBiologico = lazy(() => import("@/components/sections/MapeamentoBiologico").then(m => ({ default: m.MapeamentoBiologico })));
 const InfraestruturaRegenerativa = lazy(() => import("@/components/sections/InfraestruturaRegenerativa").then(m => ({ default: m.InfraestruturaRegenerativa })));
 const SistemaPlantio = lazy(() => import("@/components/sections/SistemaPlantio").then(m => ({ default: m.SistemaPlantio })));
@@ -52,6 +49,16 @@ const Footer = lazy(() => import("@/components/sections/Footer").then(m => ({ de
 // Minimal fallback — invisible, preserves layout flow
 const SectionFallback = () => <div className="min-h-[200px]" />;
 
+// Provérbio Chinês — exibido antes do CTA principal
+const ProverbioPlantio = () => (
+  <div className="py-10 px-6 text-center border-t border-border/20">
+    <p className="text-lg md:text-2xl italic text-foreground/80 max-w-2xl mx-auto leading-relaxed">
+      "A melhor época para plantar uma árvore foi há 20 anos. A segunda é agora."
+    </p>
+    <span className="text-sm text-muted-foreground mt-3 block tracking-widest uppercase">— Provérbio Chinês</span>
+  </div>
+);
+
 const Index = () => {
   const { t } = useTranslation();
   return (
@@ -77,9 +84,6 @@ const Index = () => {
         <SeedMovement />
         <Tecnologia />
         <EngenhariadoDrone />
-        <TecnologiaSemente />
-        <ProtocoloTecnico />
-        <JanelaDeOuro />
         <MapeamentoBiologico />
         <InfraestruturaRegenerativa />
         <SistemaPlantio />
@@ -94,13 +98,13 @@ const Index = () => {
         <Impacto />
         <Embaixadores />
         <Comunidade />
+        <ProverbioPlantio />
         <ApoieOProjeto />
         <ParceiroCorporativo />
         <ParceirosEDrones />
         <Parceiros />
         <RecebaPageamentos />
         <ManifestoPDF />
-        <Videos />
         <VisaoFinal />
         <DoacaoCripto />
         <Fundador />
