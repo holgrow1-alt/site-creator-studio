@@ -47,7 +47,7 @@ export function ProtocoloTecnico() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 1 }}
-          className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight max-w-5xl mb-6"
+          className="font-display text-3xl md:text-4xl leading-tight tracking-tight max-w-5xl mb-6"
         >
           {t("protocolo.heading1")}<br />
           <span className="text-primary text-glow">{t("protocolo.heading2")}</span>
