@@ -1,40 +1,26 @@
 import { motion } from "framer-motion";
 import {
   Mail,
-  MessageCircle,
   Instagram,
   Linkedin,
   Globe,
   ExternalLink,
   Quote,
+  CalendarDays,
 } from "lucide-react";
 import { useTranslation } from "@/i18n/LanguageContext";
 
 const specialties = [
   { label: "Desenvolvedor Agritech (Web2+Web3)", color: "#22c55e" },
   { label: "Sistemas Regenerativos", color: "#16a34a" },
-  { label: "Radiestesia & Radiônica", color: "#0ea5e9" },
+  { label: "Radiestesia & Radionica", color: "#0ea5e9" },
   { label: "Eletrocultura & Geobiologia", color: "#8b5cf6" },
   { label: "Bioenergia & Ondas Escalares", color: "#f59e0b" },
   { label: "Professor de Agrofloresta", color: "#10b981" },
-  { label: "Homeopatia Agrícola", color: "#ec4899" },
+  { label: "Homeopatia Agricola", color: "#ec4899" },
 ];
 
 const socialLinks = [
-  {
-    href: "mailto:ceorafael@ecodronescommunity.com",
-    Icon: Mail,
-    label: "Email",
-    sub: "Enviar e-mail",
-    color: "#22c55e",
-  },
-  {
-    href: "https://wa.me/5516993986738",
-    Icon: MessageCircle,
-    label: "WhatsApp",
-    sub: "+55 16 99398-6738",
-    color: "#25d366",
-  },
   {
     href: "https://instagram.com/holgrow_agro_frequency",
     Icon: Instagram,
@@ -63,7 +49,6 @@ export function Fundador() {
 
   return (
     <section id="fundador" className="relative py-8 md:py-10 overflow-hidden section-cream">
-      {/* Decorative blobs */}
       <div className="blob-sky-tr opacity-50" />
       <div className="blob-green-bl opacity-40" />
       <div className="absolute inset-0 pointer-events-none">
@@ -72,7 +57,6 @@ export function Fundador() {
       </div>
 
       <div className="container">
-        {/* Section label */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -91,10 +75,9 @@ export function Fundador() {
           <span>{t("fundador.sectionSub")}</span>
         </motion.div>
 
-        {/* 2-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-10 items-start">
 
-          {/* LEFT — Photo */}
+          {/* LEFT - Foto */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -102,7 +85,6 @@ export function Fundador() {
             transition={{ duration: 1 }}
             className="relative"
           >
-            {/* Glowing border frame */}
             <div className="relative max-w-xs mx-auto lg:mx-0">
               <div
                 className="absolute -inset-1 rounded-2xl blur-sm opacity-60"
@@ -114,22 +96,21 @@ export function Fundador() {
               <div className="relative rounded-2xl overflow-hidden aspect-[3/4] shadow-2xl ring-1 ring-primary/30">
                 <img
                   src="/rafael-guillen-ceo.jpg"
-                  alt="Rafael F. M. Guillen — CEO & Fundador EcoDrones Community"
+                  alt="Rafael F. M. Guillen - CEO & Fundador EcoDrones Community"
                   className="w-full h-full object-cover object-center"
                   loading="lazy"
                 />
-                {/* Subtle gradient overlay at bottom */}
                 <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">
                   <div className="font-display text-white text-xl drop-shadow">Rafael F. M. Guillen</div>
                   <div className="font-mono text-xs text-primary uppercase tracking-widest drop-shadow">
-                    CEO & Fundador — EcoDrones Community
+                    CEO & Fundador - EcoDrones Community
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Philosophy badge */}
+            {/* Filosofia badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -137,54 +118,35 @@ export function Fundador() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-4 max-w-xs mx-auto lg:mx-0 glass rounded-xl px-5 py-4 border border-primary/20"
             >
-              <div className="font-mono text-[10px] uppercase tracking-widest text-primary/70 mb-1">Filosofia</div>
-              <p className="text-sm text-foreground/70 italic font-light">
-                "Pequenas ações geram grandes impactos"
+              <div className="font-mono text-[9px] uppercase tracking-widest text-foreground/40 mb-2">Filosofia</div>
+              <p className="text-sm text-foreground/80 leading-relaxed italic">
+                "Regenerar a terra com tecnologia, consciencia e comunidade."
               </p>
             </motion.div>
           </motion.div>
 
-          {/* RIGHT — Bio & info */}
+          {/* RIGHT - Info */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.15 }}
-            className="space-y-4"
+            className="flex flex-col gap-6"
           >
-            {/* Name & title */}
             <div>
-              <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
-                {t("fundador.foundedLabel")}
-              </div>
-              <h2 className="font-display text-xl md:text-2xl leading-[0.9] tracking-tight mb-3">
-                {t("fundador.heading1")}{" "}
-                <span
-                  className="text-primary"
-                  style={{ textShadow: "0 0 40px hsl(142 71% 45% / 0.35)" }}
-                >
-                  {t("fundador.heading2")}
-                </span>
+              <h2 className="font-display text-2xl md:text-3xl text-foreground mb-1">
+                Rafael F. M. Guillen
               </h2>
-              <div className="font-mono text-sm text-foreground/50">
-                CEO & Fundador — EcoDrones Community &nbsp;|&nbsp; CEO — Holgrow
+              <div className="font-mono text-xs uppercase tracking-widest text-primary mb-3">
+                CEO & Fundador - EcoDrones Community
               </div>
-            </div>
-
-            {/* Bio */}
-            <div className="space-y-3 text-foreground/65 font-light leading-relaxed text-[0.95rem]">
-              <p>
-                Cientista, pesquisador e empreendedor com mais de 20 anos de experiência no setor agro. Especialista em sistemas regenerativos, radiestesia, radiônica, eletrocultura e geobiologia.
-              </p>
-              <p>
-                Atuou internacionalmente nos EUA e Europa em agricultura holística e sustentável. Reconhecido mundialmente por transformar fazendas em ecossistemas equilibrados e produtivos utilizando tecnologias inovadoras como o Quantec Pro.
-              </p>
-              <p>
-                Como CEO da Holgrow, lidera projetos de frequências no ecossistema agrícola. Como fundador da EcoDrones Community, une drones autônomos, IA e ciência regenerativa na missão de plantar 100 milhões de árvores.
+              <p className="text-sm text-foreground/70 leading-relaxed">
+                Visionario no cruzamento entre tecnologia, agricultura regenerativa e responsabilidade ambiental.
+                Lidera a EcoDrones Community com o proposito de reflorestar o planeta por meio de drones, dados e comunidade global.
               </p>
             </div>
 
-            {/* Specialties badges */}
+            {/* Especialidades */}
             <div>
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/40 mb-3">
                 Especialidades
@@ -192,8 +154,8 @@ export function Fundador() {
               <div className="flex flex-wrap gap-2">
                 {specialties.map((sp, i) => (
                   <motion.span
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.85 }}
+                    key={sp.label}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: i * 0.06 }}
@@ -210,17 +172,17 @@ export function Fundador() {
               </div>
             </div>
 
-            {/* Social links */}
+            {/* Redes sociais */}
             <div>
               <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/40 mb-3">
-                Contato & Redes
+                Redes Sociais
               </div>
-              <div className="grid sm:grid-cols-2 gap-2">
+              <div className="grid sm:grid-cols-3 gap-2">
                 {socialLinks.map(({ href, Icon, label, sub, color }) => (
                   <motion.a
                     key={label}
                     href={href}
-                    target={href.startsWith("mailto") ? undefined : "_blank"}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center gap-3 rounded-xl border px-3 py-2.5 transition-all hover:shadow-sm"
                     style={{ borderColor: color + "30", background: color + "08" }}
@@ -237,37 +199,68 @@ export function Fundador() {
                       <Icon className="w-4 h-4" style={{ color }} />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-mono text-[9px] uppercase tracking-widest text-foreground/40">
-                        {label}
-                      </div>
-                      <div
-                        className="text-xs truncate font-light transition-colors group-hover:font-normal"
-                        style={{ color: "inherit" }}
-                      >
-                        {sub}
-                      </div>
+                      <div className="font-mono text-[9px] uppercase tracking-widest text-foreground/40">{label}</div>
+                      <div className="text-xs truncate font-light">{sub}</div>
                     </div>
                   </motion.a>
                 ))}
               </div>
             </div>
 
-            {/* CTA button */}
+            {/* Contato CTA - email + reuniao */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="rounded-2xl border border-primary/25 bg-primary/5 p-5 flex flex-col gap-3"
+            >
+              <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/40">Fale Conosco</div>
+              <p className="text-sm text-foreground/75 leading-relaxed">
+                Envie-nos um e-mail ou agende uma reuniao com o CEO - estamos abertos a parcerias, pilotos voluntarios e imprensa.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-2 pt-1">
+                <motion.a
+                  href="mailto:ceorafael@ecodronescommunity.com"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-primary/40 bg-primary/10 text-primary font-semibold text-xs uppercase tracking-wider transition-all hover:bg-primary/20 hover:border-primary/70"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  Enviar E-mail
+                </motion.a>
+                <motion.a
+                  href="https://calendly.com/ceorafael-ecodronescommunity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-amber-400/40 bg-amber-400/10 text-amber-400 font-semibold text-xs uppercase tracking-wider transition-all hover:bg-amber-400/20 hover:border-amber-400/70"
+                >
+                  <CalendarDays className="w-3.5 h-3.5" />
+                  Agendar Reuniao
+                </motion.a>
+              </div>
+              <div className="font-mono text-[10px] text-foreground/35 text-center pt-1">
+                ceorafael@ecodronescommunity.com
+              </div>
+            </motion.div>
+
             <motion.a
               href="https://www.holgrow.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-neon inline-flex items-center gap-2"
+              className="btn-neon inline-flex items-center gap-2 self-start"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
             >
               <ExternalLink className="w-4 h-4" />
-              Conheça mais sobre o fundador
+              Conheca mais sobre o fundador
             </motion.a>
           </motion.div>
         </div>
 
-        {/* Quote card — full width */}
+        {/* Quote card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -281,7 +274,7 @@ export function Fundador() {
           <div className="px-4 py-6 md:px-8 md:py-8 relative">
             <Quote className="w-8 h-8 text-primary/50 mb-5" />
             <p className="font-display text-lg md:text-xl text-white leading-tight mb-6 max-w-4xl">
-              "O planeta não precisa de mais promessas; ele precisa de{" "}
+              "O planeta nao precisa de mais promessas; ele precisa de{" "}
               <span className="text-primary" style={{ textShadow: "0 0 20px hsl(142 71% 45% / 0.4)" }}>
                 algoritmos que plantam
               </span>{" "}
@@ -293,16 +286,12 @@ export function Fundador() {
             </p>
             <div className="flex items-center gap-4 border-t border-white/10 pt-5">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/40 flex-shrink-0">
-                <img
-                  src="/rafael-guillen-ceo.jpg"
-                  alt="Rafael Guillen"
-                  className="w-full h-full object-cover"
-                />
+                <img src="/rafael-guillen-ceo.jpg" alt="Rafael Guillen" className="w-full h-full object-cover" />
               </div>
               <div>
                 <div className="font-display text-white">Rafael F. M. Guillen</div>
                 <div className="font-mono text-[10px] uppercase tracking-widest text-primary">
-                  CEO & Fundador — EcoDrones Community
+                  CEO & Fundador - EcoDrones Community
                 </div>
               </div>
             </div>
