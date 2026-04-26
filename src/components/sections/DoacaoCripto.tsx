@@ -125,7 +125,7 @@ export function DoacaoCripto() {
           transition={{ duration: 0.9 }}
           className="text-center mb-8"
         >
-          <h2 className="font-display text-xl md:text-2xl leading-tight tracking-tight mb-4 text-gray-800">
+          <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight mb-4 text-gray-800">
             Doe com{" "}
             <span style={{ color: "#16a34a" }}>Cripto</span>,{" "}
             plante <span style={{ color: "#d97706" }}>Florestas</span>
