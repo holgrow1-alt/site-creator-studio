@@ -81,7 +81,7 @@ export function ParceriasESG() {
             viewport={{ once: true }}
             transition={{ duration: 1 }}
           >
-            <h2 className="font-display text-xl md:text-2xl leading-[0.95] tracking-tight mb-8">
+            <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight mb-8">
               {t("parceriasESG.heading")}
             </h2>
             <p className="text-lg text-foreground/60 font-light leading-relaxed mb-8">
