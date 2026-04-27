@@ -278,7 +278,7 @@ export function Nav() {
           onClick={(e) => { e.preventDefault(); smoothScroll("#hero"); }}
           className="flex items-center gap-3 group flex-shrink-0"
         >
-          <div className="relative w-[52px] h-[52px] -my-1">
+          <div className="relative w-[60px] h-[60px] -my-2">
             <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full group-hover:bg-primary/40 transition-all duration-700" />
             <img src={logo} alt={t("nav.logoAlt")} width={80} height={80}
               className="relative w-full h-full object-contain" />
