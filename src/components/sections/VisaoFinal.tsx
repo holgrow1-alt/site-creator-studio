@@ -81,7 +81,7 @@ export function VisaoFinal() {
           transition={{ duration: 1.2 }}
           className="text-center mb-6"
         >
-          <h2 className="font-display text-xl md:text-2xl leading-[0.95] tracking-tight mb-6">
+          <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight mb-6">
             {t("visaoFinal.heading1")}{" "}
             <span className="text-primary block mt-2" style={{ textShadow: "0 0 60px hsl(142 71% 45% / 0.3)" }}>
               {t("visaoFinal.heading2")}
