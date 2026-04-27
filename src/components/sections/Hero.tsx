@@ -48,7 +48,7 @@ export function Hero() {
           className="w-full h-full object-cover opacity-70"
         />
         <div className="absolute inset-0 gradient-hero" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
       </motion.div>
 
       {/* Layer 1 — Grid */}
@@ -93,7 +93,7 @@ export function Hero() {
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mb-2 z-10"
+          className="relative -mb-2 z-10"
         >
           {/* Outer glow halo */}
           <motion.div
@@ -156,7 +156,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="mt-4 max-w-3xl text-center text-2xl sm:text-3xl md:text-4xl text-white font-bold leading-tight"
+          className="mt-4 max-w-3xl text-center text-2xl sm:text-3xl md:text-4xl text-foreground font-bold leading-tight"
           style={{ textShadow: "0 2px 40px rgba(0,0,0,0.8)" }}
         >
           {t("hero.body")}
