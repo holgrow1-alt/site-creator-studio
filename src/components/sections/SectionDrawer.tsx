@@ -89,7 +89,7 @@ export function SectionDrawer() {
             className="fixed top-0 right-0 bottom-0 z-[100] w-full md:w-[88vw] lg:w-[82vw] bg-background overflow-y-auto shadow-2xl flex flex-col"
           >
             {/* Barra de navegação do painel */}
-            <div className="sticky top-0 z-10 flex items-center justify-between px-5 py-3 bg-background/96 backdrop-blur-xl border-b border-border/50 shrink-0">
+            <div className="sticky top-0 z-10 flex items-center justify-between px-3 sm:px-5 py-2.5 bg-background/96 backdrop-blur-md border-b border-border/50 shrink-0">
               <div className="flex items-center gap-3 min-w-0">
                 <button onClick={() => setActive(null)}
                   className="flex items-center gap-1 text-[11px] text-foreground/50 hover:text-primary transition-colors font-mono uppercase tracking-wider shrink-0">
