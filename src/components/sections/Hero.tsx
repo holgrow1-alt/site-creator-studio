@@ -74,18 +74,33 @@ export function Hero() {
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 min-h-full flex flex-col items-center justify-center container py-10 pb-24"
       >
-        {/* Tagline */}
+        {/* Tagline — cinematic display */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex items-center gap-2 sm:gap-3 mb-6 font-mono text-[11px] sm:text-sm uppercase tracking-[0.2em] text-primary font-bold"
+          initial={{ opacity: 0, y: -24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center gap-4 sm:gap-6 mb-6 w-full max-w-3xl px-2"
         >
-          <motion.span variants={wordVariant} className="w-8 sm:w-14 h-px bg-primary" />
-          {taglineWords.map((word, i) => (
-            <motion.span key={i} variants={wordVariant}>{word}</motion.span>
-          ))}
-          <motion.span variants={wordVariant} className="w-8 sm:w-14 h-px bg-primary" />
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.9 }}
+            className="flex-1 h-[2px] bg-gradient-to-r from-transparent via-primary/60 to-primary origin-left"
+          />
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display text-3xl sm:text-4xl md:text-5xl text-primary text-glow-strong tracking-widest whitespace-nowrap"
+          >
+            {t("hero.tagline")}
+          </motion.span>
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.9 }}
+            className="flex-1 h-[2px] bg-gradient-to-l from-transparent via-primary/60 to-primary origin-right"
+          />
         </motion.div>
 
         {/* Logo — big and luminous */}
