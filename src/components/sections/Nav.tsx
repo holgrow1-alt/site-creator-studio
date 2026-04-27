@@ -339,7 +339,7 @@ export function Nav() {
         </div>
 
         <button
-          className="xl:hidden text-foreground p-2"
+          className="xl:hidden text-foreground p-3 -mr-1 touch-manipulation"
           onClick={() => setOpen(!open)}
           aria-label={t("nav.menuAriaLabel")}
         >
@@ -353,7 +353,7 @@ export function Nav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="xl:hidden bg-background/98 backdrop-blur-xl border-t border-border overflow-hidden"
+            className="xl:hidden bg-background border-t border-border"
           >
             <div className="container py-4 flex flex-col">
               {NAV_GROUPS.map((item) => (
