@@ -13,15 +13,19 @@ const containerVariants = {
 
 const wordVariant = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
 };
 
 export function Hero() {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const droneY = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [0, 300]);
   const droneScale = useTransform(scrollYProgress, [0, 1], [1, reduced ? 1 : 1.2]);
   const gridY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 80]);
@@ -70,18 +74,18 @@ export function Hero() {
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 min-h-full flex flex-col items-center justify-center container py-8 pb-20"
       >
-        {/* Tagline */}
+        {/* Tagline — Drones · Reflorestamento · Comunidade */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex items-center gap-2 mb-8 font-mono text-xs uppercase tracking-[0.3em] text-primary"
+          className="flex items-center gap-2 sm:gap-3 mb-8 font-mono text-[11px] sm:text-sm uppercase tracking-[0.2em] text-primary font-bold"
         >
-          <motion.span variants={wordVariant} className="w-12 h-px bg-primary" />
+          <motion.span variants={wordVariant} className="w-8 sm:w-12 h-px bg-primary" />
           {taglineWords.map((word, i) => (
             <motion.span key={i} variants={wordVariant}>{word}</motion.span>
           ))}
-          <motion.span variants={wordVariant} className="w-12 h-px bg-primary" />
+          <motion.span variants={wordVariant} className="w-8 sm:w-12 h-px bg-primary" />
         </motion.div>
 
         {/* Logo with shimmer glow */}
@@ -105,7 +109,7 @@ export function Hero() {
           <motion.img
             src={logo}
             alt="EcoDrones Community"
-            className="relative w-[180px] md:w-[280px] lg:w-[320px] h-auto"
+            className="relative w-[200px] md:w-[300px] lg:w-[340px] h-auto"
             animate={reduced ? {} : {
               filter: [
                 "drop-shadow(0 4px 20px rgba(34,197,94,0.3))",
@@ -117,7 +121,7 @@ export function Hero() {
           />
         </motion.div>
 
-        {/* Sparkles — attached directly below logo, full visibility */}
+        {/* Sparkles */}
         <div className="w-[32rem] max-w-full h-16 relative pointer-events-none" style={{ zIndex: 1 }}>
           <div className="absolute inset-x-16 top-0 bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-[2px] w-3/4 blur-sm" />
           <div className="absolute inset-x-16 top-0 bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-px w-3/4" />
@@ -132,19 +136,29 @@ export function Hero() {
           />
         </div>
 
-        {/* Body — prominent tagline, bold */}
+        {/* Body — impactful main message */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="mt-4 max-w-2xl text-center text-xl md:text-2xl text-foreground/90 font-bold leading-snug"
+          className="mt-6 max-w-3xl text-center text-2xl sm:text-3xl md:text-4xl text-foreground font-bold leading-tight"
         >
           {t("hero.body")}
-          <br />
-          <span className="text-primary font-mono text-xs uppercase tracking-widest mt-3 inline-block font-normal">
+        </motion.p>
+
+        {/* Meta goal badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/50 bg-primary/10"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse flex-shrink-0" />
+          <span className="text-primary font-mono text-[11px] sm:text-sm uppercase tracking-widest font-bold">
             {t("hero.badge")}
           </span>
-        </motion.p>
+          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse flex-shrink-0" />
+        </motion.div>
 
         {/* CTAs */}
         <motion.div
@@ -170,7 +184,7 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator — relative to section, never clips */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
