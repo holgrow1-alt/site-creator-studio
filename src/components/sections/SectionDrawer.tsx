@@ -89,7 +89,7 @@ export function SectionDrawer() {
             className="fixed top-0 right-0 bottom-0 z-[100] w-full md:w-[88vw] lg:w-[82vw] bg-background overflow-y-auto shadow-2xl flex flex-col"
           >
             {/* Barra de navegação do painel */}
-            <div className="sticky top-0 z-10 flex items-center justify-between px-3 sm:px-5 py-2.5 bg-background/96 backdrop-blur-md border-b border-border/50 shrink-0">
+            <div className="sticky top-0 z-10 flex items-center justify-between px-3 sm:px-5 py-2.5 bg-background backdrop-blur-md border-b border-border/50 shrink-0">
               <div className="flex items-center gap-3 min-w-0">
                 <button onClick={() => setActive(null)}
                   className="flex items-center gap-1 text-[11px] text-foreground/50 hover:text-primary transition-colors font-mono uppercase tracking-wider shrink-0">
@@ -120,7 +120,19 @@ export function SectionDrawer() {
               </button>
             </div>
 
-            {/* Conteúdo — carrega apenas quando o painel abre */}
+            {/* Mobile tab strip */}
+        <div className="md:hidden overflow-x-auto border-b border-border/30 bg-background">
+          <div className="flex gap-1 px-3 py-2 min-w-max">
+            {Object.keys(DRAWER_MAP).map((g) => (
+              <button key={g} onClick={() => setActive(g)}
+                className={`px-3 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-wider transition-all whitespace-nowrap ${
+                  g === active ? "bg-primary text-background font-bold" : "text-foreground/50 border border-border/50"
+                }`}>{g}</button>
+            ))}
+          </div>
+        </div>
+
+        {/* Conteúdo — carrega apenas quando o painel abre */}
             <div className="flex-1 overflow-y-auto">
               <Suspense fallback={
                 <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-foreground/30">
