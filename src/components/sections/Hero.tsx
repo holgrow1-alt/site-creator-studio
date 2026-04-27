@@ -1,3 +1,63 @@
+        {/* Logo + tagline stacked — tagline above logo in black pill */}
+        <div className="flex flex-col items-center gap-2 z-10">
+          {/* Tagline — black pill above logo */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="bg-black/90 border border-primary/50 px-6 py-2.5 rounded-full backdrop-blur-sm shadow-neon"
+          >
+            <span className="font-display text-2xl sm:text-3xl md:text-4xl text-primary tracking-widest text-glow">
+              {t("hero.tagline")}
+            </span>
+          </motion.div>
+
+          {/* Logo shimmer */}
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+            className="relative -mb-2 mt-1"
+          >
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{ filter: "blur(80px)" }}
+              animate={reduced ? {} : {
+                backgroundColor: [
+                  "hsl(152 100% 50% / 0.25)",
+                  "hsl(152 100% 50% / 0.55)",
+                  "hsl(152 100% 50% / 0.25)",
+                ],
+              }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute inset-8 rounded-full"
+              style={{ filter: "blur(40px)" }}
+              animate={reduced ? {} : {
+                backgroundColor: [
+                  "hsl(152 100% 60% / 0.15)",
+                  "hsl(152 100% 60% / 0.40)",
+                  "hsl(152 100% 60% / 0.15)",
+                ],
+              }}
+              transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut", delay: 0.5 }}
+            />
+            <motion.img
+              src={logo}
+              alt="EcoDrones Community"
+              className="relative w-[260px] sm:w-[340px] md:w-[420px] lg:w-[500px] h-auto"
+              animate={reduced ? {} : {
+                filter: [
+                  "drop-shadow(0 0 30px rgba(0,255,136,0.5)) drop-shadow(0 0 80px rgba(0,255,136,0.3))",
+                  "drop-shadow(0 0 60px rgba(0,255,136,0.9)) drop-shadow(0 0 140px rgba(0,255,136,0.5))",
+                  "drop-shadow(0 0 30px rgba(0,255,136,0.5)) drop-shadow(0 0 80px rgba(0,255,136,0.3))",
+                ],
+              }}
+              transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
+            />
+          </motion.div>
+        </div>
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowDown } from "lucide-react";
