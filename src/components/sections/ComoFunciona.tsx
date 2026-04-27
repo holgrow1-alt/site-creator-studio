@@ -78,32 +78,6 @@ export function ComoFunciona() {
           </div>
         </motion.div>
 
-        {/* Infinity loop visual */}
-        <div className="relative flex items-center justify-center mb-8">
-          <motion.svg
-            viewBox="0 0 800 300"
-            className="w-full max-w-3xl opacity-20"
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 0.2 }}
-            viewport={{ once: true }}
-            transition={{ duration: 2.5, ease: "easeInOut" }}
-          >
-            <motion.path
-              d="M400,150 C400,80 480,30 560,30 C640,30 720,80 720,150 C720,220 640,270 560,270 C480,270 400,220 400,150 C400,80 320,30 240,30 C160,30 80,80 80,150 C80,220 160,270 240,270 C320,270 400,220 400,150"
-              fill="none"
-              stroke="hsl(142 71% 45%)"
-              strokeWidth="3"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 2.5, ease: "easeInOut" }}
-            />
-          </motion.svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Brain className="w-12 h-12 text-primary opacity-40" />
-          </div>
-        </div>
-
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {cycleSteps.map((step, i) => {
             const Icon = step.icon;
