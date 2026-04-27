@@ -136,6 +136,8 @@ export function DronemanWidget() {
   const [typing, setTyping] = useState(false)
   const bottomRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => { setIsMobile(window.innerWidth < 640) }, [])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -172,8 +174,8 @@ export function DronemanWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-            className="w-72 sm:w-80 rounded-2xl overflow-hidden shadow-2xl border border-green-200 bg-white flex flex-col"
-            style={{ maxHeight: '480px' }}
+            className="w-[calc(100vw-1.5rem)] sm:w-80 max-w-sm rounded-2xl overflow-hidden shadow-2xl border border-green-200 bg-white flex flex-col"
+            style={{ maxHeight: isMobile ? 'calc(70vh - 100px)' : '480px', minHeight: 0 }}
           >
             <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-500 shrink-0">
               <div className="flex items-center gap-2">
@@ -274,7 +276,11 @@ export function DronemanWidget() {
           animate={{ scale: [1, 1.18, 1], opacity: [0.7, 0, 0.7] }}
           transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
         />
-        <SplineScene scene={SPLINE_SCENE} className="w-full h-full" />
+        {isMobile ? (
+          <span className="flex items-center justify-center w-full h-full text-4xl">🚁</span>
+        ) : (
+          <SplineScene scene={SPLINE_SCENE} className="w-full h-full" />
+        )}
       </motion.button>
     </div>
   )
