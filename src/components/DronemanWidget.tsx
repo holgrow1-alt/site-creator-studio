@@ -8,7 +8,7 @@ const SPLINE_SCENE = 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splineco
 const KB: { keys: string[]; answer: string }[] = [
   {
     keys: ['o que e', 'ecodrones', 'projeto', 'sobre', 'apresenta', 'explica', 'me conta', 'missao'],
-    answer: `🌱 A **EcoDrones Community** e uma comunidade global de pilotos voluntarios e parceiros que usa **drones autonomos** para reflorestar o planeta - dispersando sementes inteligentes em areas degradadas com precisao cirurgica.\n\nNossa meta: **100.000 arvores plantadas**, impactando biodiversidade, comunidades locais e o clima global.`,
+    answer: `🌱 A **EcoDrones Community** e uma chomunidade global de pilotos voluntarios e parceiros que usa **drones autonomos** para reflorestar o planeta - dispersando sementes inteligentes em areas degradadas com precisao cirurgica.\n\nNossa meta: **100.000 arvores plantadas**, impactando biodiversidade, comunidades locais e o clima global.`,
   },
   {
     keys: ['meta', 'arvore', 'quantas', '100', 'objetivo', 'impacto', 'resultado'],
@@ -179,7 +179,7 @@ export function DronemanWidget() {
           >
             <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-500 shrink-0">
               <div className="flex items-center gap-2">
-                <span className="text-xl">🤖</span>
+                <img src="/logo-ecodrones.png" alt="DRONEMAN" className="w-8 h-8 object-contain rounded-full" />
                 <div>
                   <span className="font-bold text-white text-sm tracking-wide">DRONEMAN 🌱</span>
                   <div className="text-green-100 text-[10px] font-mono">Assistente EcoDrones</div>
@@ -192,7 +192,7 @@ export function DronemanWidget() {
               {messages.map((m, i) => (
                 <div key={i} className={`flex gap-2 items-start ${m.from === 'user' ? 'flex-row-reverse' : ''}`}>
                   {m.from === 'bot' && (
-                    <div className="w-7 h-7 rounded-full bg-green-500 flex items-center justify-center text-white text-xs shrink-0 mt-0.5">🤖</div>
+                    <div className="w-7 h-7 rounded-full bg-green-500 flex items-center justify-center shrink-0 mt-0.5 overflow-hidden"><img src="/logo-ecodrones.png" alt="DRONEMAN" className="w-6 h-6 object-contain p-0.5" /></div>
                   )}
                   <div className={`rounded-2xl px-3 py-2 text-sm shadow-sm max-w-[85%] leading-relaxed ${m.from === 'bot' ? 'bg-white border border-green-100 rounded-tl-sm text-gray-700' : 'bg-green-500 text-white rounded-tr-sm'}`}>
                     {m.from === 'bot' ? renderMarkdown(m.text) : m.text}
@@ -201,7 +201,7 @@ export function DronemanWidget() {
               ))}
               {typing && (
                 <div className="flex gap-2 items-start">
-                  <div className="w-7 h-7 rounded-full bg-green-500 flex items-center justify-center text-white text-xs shrink-0">🤖</div>
+                  <div className="w-7 h-7 rounded-full bg-green-500 flex items-center justify-center shrink-0 overflow-hidden"><img src="/logo-ecodrones.png" alt="DRONEMAN" className="w-6 h-6 object-contain p-0.5" /></div>
                   <div className="bg-white border border-green-100 rounded-2xl rounded-tl-sm px-3 py-2 shadow-sm">
                     <div className="flex gap-1 items-center h-4">
                       {[0, 1, 2].map(j => (
@@ -276,7 +276,7 @@ export function DronemanWidget() {
           animate={{ scale: [1, 1.18, 1], opacity: [0.7, 0, 0.7] }}
           transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
         />
-        {isMobile ? <span className="flex items-center justify-center w-full h-full text-4xl select-none">🚁</span> : <SplineScene scene={SPLINE_SCENE} className="w-full h-full" />}
+        {isMobile ? <img src="/logo-ecodrones.png" alt="EcoDrones" className="w-full h-full object-contain p-3" /> : <SplineScene scene={SPLINE_SCENE} className="w-full h-full" />}
       </motion.button>
     </div>
   )
