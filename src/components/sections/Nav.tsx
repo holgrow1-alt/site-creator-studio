@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, UserCircle, PanelRight } from "lucide-react";
-import logo from "@/assets/logo-ecodrones.png";
+const logo = "/logo-ecodrones.png";
 import { useTranslation } from "@/i18n/LanguageContext";
 import type { Language } from "@/i18n/LanguageContext";
 import { openDrawer } from "./SectionDrawer";
