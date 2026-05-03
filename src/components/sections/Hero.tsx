@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowDown } from "lucide-react";
-import logo from "@/assets/logo-ecodrones.png";
+import { logoSrc as logo } from "@/assets/logoData";
 import drone from "@/assets/drone-ecodrones.png";
 import { useTranslation } from "@/i18n/LanguageContext";
 import { SparklesCore } from "@/components/ui/sparkles";
