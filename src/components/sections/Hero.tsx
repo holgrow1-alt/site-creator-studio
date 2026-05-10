@@ -126,3 +126,6 @@ export function Hero() {
                                               background="transparent"
                                               minSize={0.5}
                                               maxSiz</section>
+
+
+                          // Logo correction deployed - high quality rendering with object-contain
