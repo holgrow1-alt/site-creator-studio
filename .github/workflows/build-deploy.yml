@@ -34,8 +34,8 @@ jobs:
         run: npm run build
 
       - name: Upload artifact
-h        with:
-          path: './dist'
+        uses: actions/upload-pages-artifact@v4
+                        with:
 
   deploy:
     environment:
