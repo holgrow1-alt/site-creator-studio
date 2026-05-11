@@ -1,44 +1,47 @@
-name: Deploy Vite to GitHub Pages
+name: Deploy to Pages
 
 on:
   push:
-      branches:
-            - main
-              workflow_dispatch:
+      branches: [main]
+        workflow_dispatch:
 
-              permissions:
-                contents: write
-                  pages: write
-                    id-token: write
+        permissions:
+          contents: write
+            pages: write
+              id-token: write
 
-                    jobs:
-                      build-and-deploy:
-                          runs-on: ubuntu-latest
-                              steps:
-                                    - name: Checkout
-                                            uses: actions/checkout@v3
+              concurrency:
+                group: pages
+                  cancel-in-progress: false
 
-                                                  - name: Setup Node.js
-                                                          uses: actions/setup-node@v3
-                                                                  with:
-                                                                            node-version: 18
+                  jobs:
+                    build:
+                        runs-on: ubuntu-latest
+                            steps:
+                                  - name: Checkout
+                                          uses: actions/checkout@v4
 
-                                                                                  - name: Install dependencies
-                                                                                          run: npm install
+                                                - name: Setup Node
+                                                        uses: actions/setup-node@v4
+                                                                with:
+                                                                          node-version: 18
 
-                                                                                                - name: Build with Vite
-                                                                                                        run: npm run build
-                                                                                                        
-                                                                                                              - name: Copy dist files to root
-                                                                                                                      run: |
-                                                                                                                                # Copy all files from dist to root, overwriting existing files
-                                                                                                                                          cp -r dist/* ./
-                                                                                                                                                    # Remove the dist folder
-                                                                                                                                                              rm -rf dist
-                                                                                                                                                              
-                                                                                                                                                                    - name: Commit and push changes
-                                                                                                                                                                            uses: stefanzweifel/git-auto-commit-action@v4
-                                                                                                                                                                                    with:
-                                                                                                                                                                                              commit_message: "chore: deploy vite build"
-                                                                                                                                                                                                        file_pattern: "*.html *.js *.css assets/"
-                                                                                                                                                                                                                  push_options: "--force"
+                                                                                - name: Install dependencies
+                                                                                        run: npm ci
+
+                                                                                              - name: Build
+                                                                                                      run: npm run build
+                                                                                                      
+                                                                                                            - name: Copy dist to root
+                                                                                                                    run: |
+                                                                                                                              cp -r dist/* .
+                                                                                                                                        rm -rf dist
+                                                                                                                                        
+                                                                                                                                              - name: Commit changes
+                                                                                                                                                      run: |
+                                                                                                                                                                git config user.name "github-actions"
+                                                                                                                                                                          git config user.email "github-actions@github.com"
+                                                                                                                                                                                    git add -A
+                                                                                                                                                                                              git commit -m "chore: deploy build" || echo "No changes to commit"
+                                                                                                                                                                                                        git push --force
+                                                                                                                                                                                                        
