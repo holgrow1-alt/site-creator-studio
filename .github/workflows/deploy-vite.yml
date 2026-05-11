@@ -1,0 +1,44 @@
+name: Deploy Vite to GitHub Pages
+
+on:
+  push:
+      branches:
+            - main
+              workflow_dispatch:
+
+              permissions:
+                contents: write
+                  pages: write
+                    id-token: write
+
+                    jobs:
+                      build-and-deploy:
+                          runs-on: ubuntu-latest
+                              steps:
+                                    - name: Checkout
+                                            uses: actions/checkout@v3
+
+                                                  - name: Setup Node.js
+                                                          uses: actions/setup-node@v3
+                                                                  with:
+                                                                            node-version: 18
+
+                                                                                  - name: Install dependencies
+                                                                                          run: npm install
+
+                                                                                                - name: Build with Vite
+                                                                                                        run: npm run build
+                                                                                                        
+                                                                                                              - name: Copy dist files to root
+                                                                                                                      run: |
+                                                                                                                                # Copy all files from dist to root, overwriting existing files
+                                                                                                                                          cp -r dist/* ./
+                                                                                                                                                    # Remove the dist folder
+                                                                                                                                                              rm -rf dist
+                                                                                                                                                              
+                                                                                                                                                                    - name: Commit and push changes
+                                                                                                                                                                            uses: stefanzweifel/git-auto-commit-action@v4
+                                                                                                                                                                                    with:
+                                                                                                                                                                                              commit_message: "chore: deploy vite build"
+                                                                                                                                                                                                        file_pattern: "*.html *.js *.css assets/"
+                                                                                                                                                                                                                  push_options: "--force"
