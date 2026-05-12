@@ -41,8 +41,7 @@
     "scrollIndicator": "01 / HERO"
   },
   "marquee": {
-    "words": "REGENERAÇÃO,REFLORESTAMENTO,DRONES,FLORESTAS,COMUNIDADE,AÇÃO,ABUNDÂNCIA,RENDA"
-  },
+"words": "REGENERAÇÃO,FLORESTAS,AÇÃO,ABUNDÂNCIA,RENDA"  },
   "manifesto": {
     "sectionLabel": "/01",
     "sectionSub": "Manifesto",
