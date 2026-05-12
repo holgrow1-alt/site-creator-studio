@@ -79,11 +79,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-black/90 border border-primary/50 px-6 py-2.5 rounded-full backdrop-blur-sm shadow-neon"
           >
-            <span className="font-display text-2xl sm:text-3xl md:text-4xl text-primary tracking-widest text-glow">
-              {t("hero.tagline")}
-            </span>
           </motion.div>
 
           {/* Logo with shimmer glow */}
@@ -93,12 +89,6 @@ export function Hero() {
             transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
             className="relative -mb-2 mt-1"
           >
-            <motion.img
-              src={logo}
-              alt="EcoDrones Community"
-              className="relative w-[260px] sm:w-[340px] md:w-[420px] lg:w-[500px] h-auto block object-contain filter drop-shadow-[0_0_20px_hsl(var(--primary)/0.3)]"
-              loading="eager"
-              decoding="async"
             />
           </motion.div>
         </div>
