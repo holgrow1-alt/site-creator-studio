@@ -89,7 +89,6 @@ export function Hero() {
             transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
             className="relative -mb-2 mt-1"
           >
-            />
           </motion.div>
         </div>
 

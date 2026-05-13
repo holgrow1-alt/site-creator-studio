@@ -41,7 +41,8 @@
     "scrollIndicator": "01 / HERO"
   },
   "marquee": {
-"words": "REGENERAÇÃO,FLORESTAS,AÇÃO,ABUNDÂNCIA,RENDA"  },
+    "words": "REGENERAÇÃO,FLORESTAS,AÇÃO,ABUNDÂNCIA,RENDA"
+  },
   "manifesto": {
     "sectionLabel": "/01",
     "sectionSub": "Manifesto",
